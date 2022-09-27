@@ -12,18 +12,26 @@ import random
     Attributes:
         value (int): The number of spots on the side facing up.
         points (int): The number of points the die is worth.
-    """
+        """
+class Die:
+
 
 # 2) Create the class constructor. Use the following method comment.
-"""     Constructs a new instance of Die with a value and points attribute.
+    """     Constructs a new instance of Die with a value and points attribute.
 
         Args:
             self (Die): An instance of Die.
-        """
+    """
+    def __init__(self):
+        self.value = 0
+        self.points = 0
 
 # 3) Create the roll(self) method. Use the following method comment.
-"""     Generates a new random value and calculates the points.
+    """     Generates a new random value and calculates the points.
         
         Args:
             self (Die): An instance of Die.
-        """
+    """
+    def roll(self):
+        self.value = random.randint(1, 6)
+        self.points = 50 if self.value == 5 else 100 if self.value ==1 else 0
