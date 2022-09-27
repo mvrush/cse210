@@ -33,5 +33,6 @@ class Die:
             self (Die): An instance of Die.
     """
     def roll(self):
-        self.value = random.randint(1, 6)
-        self.points = 50 if self.value == 5 else 100 if self.value ==1 else 0
+        self.value = random.randint(1, 6) # Calls the random library imported at top, uses the 'randint()' function start value=1 end value=6. Will pick random numbers between and including 1 and 6.
+        self.points = 50 if self.value == 5 else 100 if self.value == 1 else 0
+        print(f'This is the dice value - {self.value}, This is the roll points - {self.points}') # This line added by Matt for troubleshooting
