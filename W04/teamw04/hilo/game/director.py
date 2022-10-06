@@ -30,7 +30,7 @@ class Director:
 
     def do_updates(self):
         dealer = Dealer()
-        dealer.draw() # Draws a card using draw() function in the Dealer class
+        dealer.draw_card() # Draws a card using draw() function in the Dealer class
         self.card = dealer.value #possibly updates 'self.card' in Director class?
         #print(f"This is our do_updates card - {self.card}")
     
