@@ -28,7 +28,7 @@ class Director:
             die = Die() # We create each 'die' using the 'Die()' class imported from our 'die.py' using 'import Die' at the top.
             self.dice.append(die) # Each time through the loop we append a die to the 'dice' array defined in the attributes of Director above. 
 
-    def start_game(self): # This is a METHOD 
+    def start_game(self): # This is a METHOD held in the Director class
         """Starts the game by running the main game loop.
         
         Args:
@@ -39,7 +39,7 @@ class Director:
             self.do_updates() # 'do_updates()' method. Advances the game one step (basically rolls dice, adds the score)
             self.do_outputs() # 'do_outputs()' method. Shows the the user what they rolled and their score
 
-    def get_inputs(self): # This is a METHOD
+    def get_inputs(self): # This is a METHOD held in the Director class
         """Ask the user if they want to roll.
 
         Args:
