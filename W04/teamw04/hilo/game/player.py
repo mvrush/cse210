@@ -23,7 +23,7 @@ class Player:
     """
 
     def __init__(self):
-        self.score = 0
+        self.score = 300 # Player starts the game with 300 points
 
     def add_points(self):
         self.score += 100

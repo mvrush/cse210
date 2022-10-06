@@ -18,6 +18,7 @@ class Director:
             self (Director): an instance of Director.
         """
         self.card = 0
+        self.is_playing = True # ATTRIBUTE Boolean
 
     def start_game(self):
         """ Starts the game by running the main game loop
