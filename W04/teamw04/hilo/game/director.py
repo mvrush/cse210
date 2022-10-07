@@ -28,7 +28,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        while self.is_playing:
+        while self.is_playing: # Says do this loop while 'self.is.playing' is 'True'
             self.get_inputs()
             self.do_updates()
             self.do_outputs()
