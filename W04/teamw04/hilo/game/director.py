@@ -82,7 +82,7 @@ class Director:
     def do_outputs(self):
         #d1 = Director() # This line for troubleshooting
         #print(f"This is our card - {d1.card}") # This line for troubleshooting
-        print(f"This is our get_inputs card - {self.card}") # This line for troubleshooting
+        #print(f"This is our get_inputs card - {self.card}") # This line for troubleshooting
         print(f"Your score is now: {self.player.score}")                
         if  self.player.score > 0:
             keep_playing = input("\nPlay again? [y/n] ").lower()
