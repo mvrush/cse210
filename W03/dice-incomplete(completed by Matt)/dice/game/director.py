@@ -49,7 +49,7 @@ class Director:
         self.is_playing = (roll_dice == "y") # if the 'roll_dice' variable is equal to (==) 'y' it stores the boolean 'True' in the 'self.is_playing' attribute
         # After the above two steps are complete it returns to the 'start_game(self)' method then does the 'do_updates' metho
        
-    def do_updates(self):
+    def do_updates(self): # This is a METHOD held in the Director class
         """Updates the player's score.
 
         Args:
@@ -64,7 +64,7 @@ class Director:
             self.score += die.points  # Adds the individual score of that die to the 'self.score' attribute in Director
         self.total_score += self.score # Adds the current 'self.score' to the 'self.total_score' attributes in Director
 
-    def do_outputs(self):
+    def do_outputs(self): # This is a METHOD held in the Director class
         """Displays the dice and the score. Also asks the player if they want to roll again. 
 
         Args:

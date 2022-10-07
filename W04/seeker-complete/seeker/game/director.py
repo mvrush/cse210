@@ -32,7 +32,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        while self._is_playing:
+        while self._is_playing: # says, while 'self._is_playing' is True, keep running this 3-step loop.
             self._get_inputs() # 'get_inputs()' method. Detects user input
             self._do_updates() # 'do_updates()' method. Advances the game one step
             self._do_outputs() # 'do_outputs()' method. Shows the the user what happened
