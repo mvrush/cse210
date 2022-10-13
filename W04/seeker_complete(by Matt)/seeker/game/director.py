@@ -44,7 +44,7 @@ class Director:
             self (Director): An instance of Director.
         """
         new_location = self._terminal_service.read_number("\nEnter a location [1-1000]: ") # Calls the 'read_number()' function in the TerminalService() class held in the 'self.terminal_service' attribute defined above. Passes the string prompting user for input.
-        self._seeker.move_location(new_location) # Calls the 'move_location()' function from the Seeker() class held in the 'self._seeker' attribute above. Passes the user's input for the 'new_location' variable on the line just above this one.
+        self._seeker.move_location(new_location) # Calls the 'move_location()' function from the Seeker() class held in the 'self._seeker' attribute above. Passes the user's input for the 'new_location' variable on the line just above this one to the 'move_location(self, location)' function in the Seeker class
         
     def _do_updates(self): # This is a METHOD held in the Director class
         """Keeps watch on where the seeker is moving.
@@ -63,5 +63,5 @@ class Director:
         """
         hint = self._hider.get_hint() # Calls the 'get_hint()' function from the Hider() class held in the 'self._hider' attribute above. Holds it in the 'hint' variable here.
         self._terminal_service.write_text(hint) # Uses the TerminalService() class and passes the variable value 'hint' to the 'write_text()' Method function
-        if self._hider.is_found(): # calls the 'is_found()' function in the Hider() class held in the 'self._hider' attribute defined above
+        if self._hider.is_found(): # calls the 'is_found()' function in the Hider() class held in the 'self._hider' attribute defined above. If 'is_found()' from the Hider class is now True, it sets self._is_playing to False and ends the game
             self._is_playing = False # sets the '_is_playing' attribute to False to end the game.

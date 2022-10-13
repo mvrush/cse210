@@ -29,7 +29,7 @@ class Seeker:
         Returns:
             number: The current location,
         """
-    def get_location(self): # This is a Get method that allows us to acces the private self._location of the class outside the class
+    def get_location(self): # This is a Get method that allows us to acces the private self._location of the class outside the class. Whenever something calls it, it gives them the current self._location of the seeker
         return self._location
         
 # 4) Create the move_location(self, location) method. Use the following method comment.
@@ -40,4 +40,4 @@ class Seeker:
             location (int): The given location.
         """
     def move_location(self, location):
-        self._location = location
+        self._location = location # The user input controlled from director.py is passed to this 'move_location(self, location)' method. The user input for 'location' becomes the new self._location
