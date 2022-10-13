@@ -21,10 +21,10 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self._hider = Hider() # ATTRIBUTE calls the Hider() class as a function
+        self._hider = Hider() # ATTRIBUTE calls the Hider() class as a function. Creates an instance of Hider() and assigns it to self._hider
         self._is_playing = True # ATTRIBUTE sets the boolean 'True' to show we are currently playing
-        self._seeker = Seeker() # ATTRIBUTE calls the Seeker() class as a function
-        self._terminal_service = TerminalService() # ATTRIBUTE calls the TerminalService() class as a function
+        self._seeker = Seeker() # ATTRIBUTE calls the Seeker() class as a function. Creates an instance of Seeker() ans assigns it to self._seeker
+        self._terminal_service = TerminalService() # ATTRIBUTE calls the TerminalService() class as a function. Creates an instance of TerminalService() and assigns it to self._terminal_service
         
     def start_game(self): # This is a METHOD held in the Director class
         """Starts the game by running the main game loop.
