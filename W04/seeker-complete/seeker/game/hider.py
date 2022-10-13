@@ -29,7 +29,7 @@ class Hider:
             string: A hint for the seeker.
         """
         hint = "(-.-) Nap time."
-        if self._distance[-1] == 0:
+        if self._distance[-1] == 0: 
             hint = "(;.;) You found me!"
         elif self._distance[-1] > self._distance[-2]:
             hint = "(^.^) Getting colder!"
