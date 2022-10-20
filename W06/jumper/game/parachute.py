@@ -17,7 +17,7 @@ class Parachute:
         Args:
             self (parachute): An instance of parachute.
         """
-        self._chute = ["  ___  ", " /   \ ", "  ___  ", " \   / ", "  \ /  "] # The "_" before chute means it's private.
+        self._chute = ["  ___  ", " /___\ ", " \   / ", "  \ /  "] # The "_" before chute means it's private.
         self._man = ["   o   ", "  /|\  ", "  / \  ", "", "^^^^^^^"]
     
     def draw_chute(self):
@@ -27,10 +27,21 @@ class Parachute:
             self (Parachute): An instance of Parachute.
         
         """
-        print(self._chute)
-    #def draw_man():
+        for i in self._chute: # This loops through the list and prints the item in each index position.
+            print(i)
+    
+    def draw_man(self):
+        """METHOD will draw the man
+                
+        Args:
+            self (Parachute): An instance of Parachute.
+        
+        """
+        for i in self._man:
+            print(i)
 
 """ Following lines for testing purposes. Uncomment and run parachute.py to test. """
 parachute = Parachute() # creates an instance of parachute using the 'Parachute()' class
 parachute.draw_chute() # uses the 'draw_chute()' Method (function) to draw the parachute
+parachute.draw_man() # uses the 'draw_man()' Method (function) to draw the man.
     
