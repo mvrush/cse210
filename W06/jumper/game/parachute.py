@@ -118,4 +118,3 @@ parachute = Parachute() # creates an instance of parachute using the 'Parachute(
 #parachute.draw_chute() # uses the 'draw_chute()' Method (function) to draw the parachute
 #parachute.draw_man() # uses the 'draw_man()' Method (function) to draw the man.
 parachute.erase_chute_test()
-    

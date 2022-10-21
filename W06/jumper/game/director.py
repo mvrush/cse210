@@ -65,3 +65,7 @@ class Director:
         parachute = self._parachute.erase_chute() # Calls the 'draw_chute()' function from the Parachute() class
         self._terminal_service.write_text(parachute) # Uses the TerminalService() class and passes the variable value 'parachute' to the 'write_text()' Method function to draw the parachute
 
+
+""" NEXT LINES FOR TESTING ONLY """
+#director = Director() # Creates in instance of the director class I can use to test functions.
+#director.start_game() # Runs the 'start_game()' function
