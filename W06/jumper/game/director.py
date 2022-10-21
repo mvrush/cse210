@@ -32,6 +32,8 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        self._parachute.draw_chute() # Draws the initial parachute
+        self._parachute.draw_man() # Draws the initial man
         while self._is_playing: # says, while 'self_is_playing' is True, keep running this loop.
             self._get_inputs() # 'get_inputs()' method. Gets user input from TerminalService()
             self._do_updates() # 'do_updates()' method. Advances the game one step
