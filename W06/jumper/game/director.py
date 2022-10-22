@@ -33,8 +33,8 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self._parachute.draw_chute() # Draws the initial parachute
-        self._parachute.draw_man() # Draws the initial man
+        #self._parachute.draw_chute() # Draws the initial parachute
+        #self._parachute.draw_man() # Draws the initial man
         while self._is_playing: # says, while 'self_is_playing' is True, keep running this loop.
             self._get_inputs() # 'get_inputs()' method. Gets user input from TerminalService()
             self._do_updates() # 'do_updates()' method. Advances the game one step
@@ -46,6 +46,8 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        self._word.print_clue()
+        self._parachute.erase_chute(self._guess) # Passes the boolean True or False to the 'erase_chute()' function in the Parachute() class.
         letter_guess = self._terminal_service.read_text("\nGuess a letter [a-z]: ") # 'read_letter()' can have prompts to ask user for letter input.
         self._guess = self._word.check_guess_matches(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter to that function then stores the returned True or False in the 'self._guess' value defined in class variables
 
@@ -58,7 +60,12 @@ class Director:
         #self._word.check_guess_matches(self._parachute.erase_chute()) # This will call the 'correct_guess()' function from the Word() class and give it access to the Parachute() class by passing  'self._parachute' so that it can send the True or False value to the Parachute() class
         #print(self._word.check_guess_matches())
         #guess_boolean = self._word.check_guess_matches()
-        self._parachute.erase_chute(self._guess)
+        word_complete = self._word.word_match_complete()
+        #self._parachute.erase_chute(self._guess) # Passes the boolean True or False to the 'erase_chute()' function in the Parachute() class.
+        if word_complete == False:
+            self._get_inputs()
+
+
 
     def _do_outputs(self):
         """Provides a hint for the seeker to use.

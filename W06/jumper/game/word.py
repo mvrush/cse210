@@ -28,8 +28,8 @@ class Word:
                     self._guess_state[i] = x
                 i += 1
 
-            print(*self._guess_state)  # Used in class test. In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
-            # print("".join(self._guess_state))  # Used in class test. Use this line to join the word without spaces.
+            #print(*self._guess_state)  # Used in class test. In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
+            #print("".join(self._guess_state))  # Used in class test. Use this line to join the word without spaces.
             return True # Returns 'True'
         else:
             return False # Returns 'False'
