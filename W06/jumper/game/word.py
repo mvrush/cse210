@@ -16,6 +16,7 @@ class Word:
 
     def print_clue(self):
         print(*self._guess_state) # In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
+        print() # adds blank line after the clue for spacing.
         #for i in self._guess_state: # loops through each letter in self._guess_state and then prints it.
         #    print(i, end="") # Here we use the 'end=""' method to print the list on the same line. If you want a space between letters, just add a space in the string for end like this (end=" ")
 

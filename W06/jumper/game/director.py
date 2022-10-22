@@ -59,10 +59,10 @@ class Director:
         """
         #self._word.check_guess_matches(self._parachute.erase_chute()) # This will call the 'correct_guess()' function from the Word() class and give it access to the Parachute() class by passing  'self._parachute' so that it can send the True or False value to the Parachute() class
         #print(self._word.check_guess_matches())
-        #guess_boolean = self._word.check_guess_matches()
+        #guess_boolean = self._word.check_guess_matches()        
         word_complete = self._word.word_match_complete()
         #self._parachute.erase_chute(self._guess) # Passes the boolean True or False to the 'erase_chute()' function in the Parachute() class.
-        if word_complete == False:
+        while word_complete == False:
             self._get_inputs()
 
 
