@@ -47,9 +47,13 @@ class Director:
             self (Director): An instance of Director.
         """
         self._word.print_clue()
-        self._parachute.erase_chute(self._guess) # Passes the boolean True or False to the 'erase_chute()' function in the Parachute() class.
-        letter_guess = self._terminal_service.read_text("\nGuess a letter [a-z]: ") # 'read_letter()' can have prompts to ask user for letter input.
-        self._guess = self._word.check_guess_matches(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter to that function then stores the returned True or False in the 'self._guess' value defined in class variables
+        no_chute = self._parachute.erase_chute(self._guess) # Passes the boolean True or False from 'self._guess' to the 'erase_chute()' function in the Parachute() class. Receives the returned boolean from 'self._parachute.erase_chute()' and stores it in the 'no_chute' variable
+        print(no_chute)
+        if no_chute == None:
+            letter_guess = self._terminal_service.read_text("\nGuess a letter [a-z]: ") # 'read_letter()' can have prompts to ask user for letter input.
+            self._guess = self._word.check_guess_matches(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter from user input in the previous line to that function then stores the returned True or False in the 'self._guess' value defined in class variables
+        else:
+            print("Sorry, your parachute is gone...you lose!")
 
     def _do_updates(self):
         """Keeps watch on if the word is guessed an updates the parachute.
@@ -63,6 +67,7 @@ class Director:
         word_complete = self._word.word_match_complete()
         #self._parachute.erase_chute(self._guess) # Passes the boolean True or False to the 'erase_chute()' function in the Parachute() class.
         while word_complete == False:
+            word_complete = self._word.word_match_complete() # We run this again to check and see if the word_complete is now true.
             self._get_inputs()
 
 

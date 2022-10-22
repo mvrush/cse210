@@ -4,8 +4,9 @@ import random
 class Word:
 
     def __init__(self):
-        self._word_list = ["fox", "cat", "happy", "drama",
-                           "cartoons", "television", "biscuits", "wifi", "laptop"]
+        #self._word_list = ["fox", "cat", "happy", "drama",
+        #                   "cartoons", "television", "biscuits", "wifi", "laptop"]
+        self._word_list = ["cat"]
         self._random_word = random.choice(self._word_list)
         self._guess_state = []
 

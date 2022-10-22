@@ -47,6 +47,7 @@ class Parachute:
                 print(i)
             for i in self._man:
                 print(i)
+            
         
         if answer == False:
             self._chute.pop(0) # Removes the item at index position 0. Note, if you don't specify an index position, pop() removes the last item on the list.
@@ -55,13 +56,14 @@ class Parachute:
             if len(self._chute) != 0: # This says, it the length of 'self._chute' does not (!) equal zero, loop through 'self._man' and print each index content.
                 for i in self._man:
                     print(i)
+            
 
         if len(self._chute) == 0:
             self._man[0] = "   x   " # if the length gets to zero, changes the content of index position [0] in 'self._man' to an 'x' to replace the head of our man.
             for i in self._man:
                 print(i)
-            end_game = print(f"You fell!\n") # the \n adds a new blank line after this is printed. It's for formatting purposes to make it look better in the terminal.
-            return end_game # This 'return' statement takes effect only when this 'if' statement is reached and true. It ends the program.
+            # end_game = print(f"You fell!\n") # Was going to return this print statement when chute == 0 but switched to boolean to end game from Director.
+            return True # This 'return' statement takes effect only when this 'if' statement is reached and true. It ends the program.
     
 
     """ THIS IS THE FUNCTION I USED FOR TESTING
@@ -112,11 +114,11 @@ class Parachute:
 
 """
 
-
-""" Following lines for testing purposes. Uncomment and run parachute.py to test.
+""" Following lines for testing purposes. Uncomment and run parachute.py to test. 
 parachute = Parachute() # creates an instance of parachute using the 'Parachute()' class
 #parachute.draw_chute() # uses the 'draw_chute()' Method (function) to draw the parachute
 #parachute.draw_man() # uses the 'draw_man()' Method (function) to draw the man.
 parachute.erase_chute_test()
 
 """
+
