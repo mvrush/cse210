@@ -29,10 +29,10 @@ class Word:
                 i += 1
 
             print(*self._guess_state)  # Used in class test. In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
-            print("".join(self._guess_state))  # Used in class test
-            return True
+            # print("".join(self._guess_state))  # Used in class test. Use this line to join the word without spaces.
+            return True # Returns 'True'
         else:
-            return False
+            return False # Returns 'False'
 
     def word_match_complete(self):
         if "".join(self._guess_state) == self._random_word:

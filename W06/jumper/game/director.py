@@ -25,6 +25,7 @@ class Director:
         self._is_playing = True # ATTRIBUTE sets the boolean 'True' to show we are currently playing
         self._word = Word() # ATTRIBUTE calls the Word() class and creates an instance of it called self._word.
         self._terminal_service = TerminalService() # ATTRIBUTE calls the TerminalService() class and creates an instance of TerminalService() and assigns it to self._terminal_service
+        self._guess = True # ATTRIBUTE this is a class variable for the guesses, default is set to True until overwritten by a function.
     
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -46,7 +47,7 @@ class Director:
             self (Director): An instance of Director.
         """
         letter_guess = self._terminal_service.read_text("\nGuess a letter [a-z]: ") # 'read_letter()' can have prompts to ask user for letter input.
-        self._word.check_guess_matches(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter to that function
+        self._guess = self._word.check_guess_matches(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter to that function then stores the returned True or False in the 'self._guess' value defined in class variables
 
     def _do_updates(self):
         """Keeps watch on if the word is guessed an updates the parachute.
@@ -54,7 +55,10 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        self._word.correct_guess(self._parachute) # This will call the 'correct_guess()' function from the Word() class and give it access to the Parachute() class by passing  'self._parachute' so that it can send the True or False value to the Parachute() class
+        #self._word.check_guess_matches(self._parachute.erase_chute()) # This will call the 'correct_guess()' function from the Word() class and give it access to the Parachute() class by passing  'self._parachute' so that it can send the True or False value to the Parachute() class
+        #print(self._word.check_guess_matches())
+        #guess_boolean = self._word.check_guess_matches()
+        self._parachute.erase_chute(self._guess)
 
     def _do_outputs(self):
         """Provides a hint for the seeker to use.
