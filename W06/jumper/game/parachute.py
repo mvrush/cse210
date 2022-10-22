@@ -64,7 +64,7 @@ class Parachute:
             return end_game # This 'return' statement takes effect only when this 'if' statement is reached and true. It ends the program.
     
 
-    """ THIS IS THE FUNCTION I USED FOR TESTING """
+    """ THIS IS THE FUNCTION I USED FOR TESTING
     def erase_chute_test(self):
         for i in self._chute: # This loops through the list and prints the item in each index position to print chute.
             print(i)   
@@ -110,11 +110,13 @@ class Parachute:
             else:
                 print("Invalid input, please try again") # This else statement works with the input validation. When the answer is not 'y' or 'n' valid_input becomes false and this is printed and the loop runs again.
 
+"""
 
 
-
-""" Following lines for testing purposes. Uncomment and run parachute.py to test. """
+""" Following lines for testing purposes. Uncomment and run parachute.py to test.
 parachute = Parachute() # creates an instance of parachute using the 'Parachute()' class
 #parachute.draw_chute() # uses the 'draw_chute()' Method (function) to draw the parachute
 #parachute.draw_man() # uses the 'draw_man()' Method (function) to draw the man.
 parachute.erase_chute_test()
+
+"""

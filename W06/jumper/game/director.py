@@ -45,8 +45,8 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        letter_guess = self._terminal_service.read_letter() # 'read_letter()' can have prompts to ask user for letter input.
-        self._word.guessed_letter(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter to that function
+        letter_guess = self._terminal_service.read_text("\nGuess a letter [a-z]: ") # 'read_letter()' can have prompts to ask user for letter input.
+        self._word.check_guess_matches(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter to that function
 
     def _do_updates(self):
         """Keeps watch on if the word is guessed an updates the parachute.

@@ -42,6 +42,6 @@ class Word:
 
 
 # What follows below is for testing the class
-word = Word()
-word.print_clue()
-word.check_guess_matches('a')
+#word = Word()
+#word.print_clue()
+#word.check_guess_matches('a')
