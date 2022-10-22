@@ -12,8 +12,14 @@ class Word:
         for x in self._random_word:
             self._guess_state.append("_")
 
-        print(self._guess_state)  # Used in class test
+        #print(*self._guess_state)  # Used in class test. In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
 
+    def print_clue(self):
+        print(*self._guess_state) # In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
+        #for i in self._guess_state: # loops through each letter in self._guess_state and then prints it.
+        #    print(i, end="") # Here we use the 'end=""' method to print the list on the same line. If you want a space between letters, just add a space in the string for end like this (end=" ")
+
+    
     def check_guess_matches(self, guessed_character):
         if guessed_character in self._random_word:
             i = 0
@@ -22,7 +28,7 @@ class Word:
                     self._guess_state[i] = x
                 i += 1
 
-            print(self._guess_state)  # Used in class test
+            print(*self._guess_state)  # Used in class test. In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
             print("".join(self._guess_state))  # Used in class test
             return True
         else:
@@ -37,4 +43,5 @@ class Word:
 
 # What follows below is for testing the class
 word = Word()
-word.check_guess_matches('e')
+word.print_clue()
+word.check_guess_matches('a')
