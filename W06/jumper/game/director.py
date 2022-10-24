@@ -26,6 +26,7 @@ class Director:
         self._word = Word() # ATTRIBUTE calls the Word() class and creates an instance of it called self._word.
         self._terminal_service = TerminalService() # ATTRIBUTE calls the TerminalService() class and creates an instance of TerminalService() and assigns it to self._terminal_service
         self._guess = True # ATTRIBUTE this is a class variable for the guesses, default is set to True until overwritten by a function.
+        self._no_chute = None # ATTRIBUTE Set this to none to match return values from Parachute() 'erase_chute()' when there is still a chute.
     
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -47,13 +48,12 @@ class Director:
             self (Director): An instance of Director.
         """
         self._word.print_clue()
-        no_chute = self._parachute.erase_chute(self._guess) # Passes the boolean True or False from 'self._guess' to the 'erase_chute()' function in the Parachute() class. Receives the returned boolean from 'self._parachute.erase_chute()' and stores it in the 'no_chute' variable
-        print(no_chute)
-        if no_chute == None:
+        self._no_chute = self._parachute.erase_chute(self._guess) # Passes the boolean True or False from 'self._guess' to the 'erase_chute()' function in the Parachute() class. Receives the returned boolean from 'self._parachute.erase_chute()' and stores it in the 'no_chute' variable
+        print(self._no_chute)
+        if self._no_chute == None:
             letter_guess = self._terminal_service.read_text("\nGuess a letter [a-z]: ") # 'read_letter()' can have prompts to ask user for letter input.
             self._guess = self._word.check_guess_matches(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter from user input in the previous line to that function then stores the returned True or False in the 'self._guess' value defined in class variables
-        else:
-            print("Sorry, your parachute is gone...you lose!")
+        return self._no_chute # Returns the value for 'self._no_chute'
 
     def _do_updates(self):
         """Keeps watch on if the word is guessed an updates the parachute.
@@ -66,9 +66,10 @@ class Director:
         #guess_boolean = self._word.check_guess_matches()        
         word_complete = self._word.word_match_complete()
         #self._parachute.erase_chute(self._guess) # Passes the boolean True or False to the 'erase_chute()' function in the Parachute() class.
-        while word_complete == False:
+        while word_complete == False and self._no_chute == None:
             word_complete = self._word.word_match_complete() # We run this again to check and see if the word_complete is now true.
             self._get_inputs()
+        # if word_complete becomes True it goes 'to _do_outputs()'.            
 
 
 
