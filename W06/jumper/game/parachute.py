@@ -63,7 +63,7 @@ class Parachute:
             for i in self._man:
                 print(i)
             # end_game = print(f"You fell!\n") # Was going to return this print statement when chute == 0 but switched to boolean to end game from Director.
-            return True # This 'return' statement takes effect only when this 'if' statement is reached and true. It ends the program.
+            return True # This 'return' statement takes effect only when this 'if' statement is reached and true, otherwise always returns 'none'. Sends this True to Director '_get_inputs()' to the 'no_chute' variable. It ends the program.
     
 
     """ THIS IS THE FUNCTION I USED FOR TESTING
