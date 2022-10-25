@@ -79,8 +79,14 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        parachute = self._parachute.erase_chute() # Calls the 'draw_chute()' function from the Parachute() class
-        self._terminal_service.write_text(parachute) # Uses the TerminalService() class and passes the variable value 'parachute' to the 'write_text()' Method function to draw the parachute
+        if self._no_chute == True:
+            self._terminal_service.write_text(f"Ya'll died foo. Your parachute is gone. See that 'x' for a head? That mean you dead.\n") # prints this out using the 'write_text()' function from 'TerminalService()'
+            self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
+        
+        else:
+            word = self._word.print_clue()
+            self._terminal_service.write_text(f"You did it! The word was {word}.")
+            self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
 
 
 """ NEXT LINES FOR TESTING ONLY """
