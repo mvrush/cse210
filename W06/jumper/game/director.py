@@ -69,7 +69,7 @@ class Director:
             word_complete = self._word.word_match_complete() # We run this again to check and see if the word_complete is now true.
             if word_complete == False:
                 self._get_inputs()
-        # if word_complete becomes True it goes 'to _do_outputs()'.            
+        # if word_complete becomes True it goes directly to '_do_outputs()'.            
 
 
 
