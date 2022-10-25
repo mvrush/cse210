@@ -86,11 +86,13 @@ class Director:
                 play_again = input("Play again? [y or n]: ").lower() # takes user input, changes it to lower case using the 'lower()' function and stores it in the 'play_again' variable.
             if play_again == "y":
                 self._word = Word() # ATTRIBUTE calls the Word() class and creates an instance of it called self._word. Did this to reset the random word
-                self._parachute = Parachute() # ATTRIBUTE calls the Parachute() class and creates an instance of it called self._hider. Did this to reset the parachute
+                self._parachute = Parachute() # ATTRIBUTE calls the Parachute() class and creates an instance of it called self._parachute. Did this to reset the parachute
+                self._guess = True # ATTRIBUTE this is a class variable for the guesses, sets it back to "True" until overwritten by a function.
                 self._is_playing = True
             
-            elif play_again == "n":
-                self._terminal_service.write_text("Thanks for playing Jumper!")
+            #elif play_again == "n":
+            else:
+                self._terminal_service.write_text(f"\nThanks for playing Jumper!")
                 print() # Prints a blank line to make it look nicer when the program ends.
                 self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
         
@@ -104,11 +106,12 @@ class Director:
                 play_again = input("Play again? [y or n]: ").lower() # takes user input, changes it to lower case using the 'lower()' function and stores it in the 'play_again' variable.
             if play_again == "y":
                 self._word = Word() # ATTRIBUTE calls the Word() class and creates an instance of it called self._word. Did this to reset the random word
-                self._parachute = Parachute() # ATTRIBUTE calls the Parachute() class and creates an instance of it called self._hider. Did this to reset the parachute
+                self._parachute = Parachute() # ATTRIBUTE calls the Parachute() class and creates an instance of it called self._parachute. Did this to reset the parachute
                 self._is_playing = True
             
-            elif play_again == "n":
-                self._terminal_service.write_text("Thanks for playing Jumper!")
+            #elif play_again == "n":
+            else:
+                self._terminal_service.write_text(f"\nThanks for playing Jumper!")
                 print() # Prints a blank line to make it look nicer when the program ends.
                 self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
             
