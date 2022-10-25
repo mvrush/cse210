@@ -4,9 +4,9 @@ import random
 class Word:
 
     def __init__(self):
-        #self._word_list = ["fox", "cat", "happy", "drama",
-        #                   "cartoons", "television", "biscuits", "wifi", "laptop"]
-        self._word_list = ["cat"]
+        self._word_list = ["fox", "cat", "happy", "drama",
+                           "cartoons", "television", "biscuits", "wifi", "laptop"]
+        # self._word_list = ["cat"] # Used this line for testing so I had the same word every time.
         self._random_word = random.choice(self._word_list)
         self._guess_state = []
 
@@ -16,10 +16,11 @@ class Word:
         #print(*self._guess_state)  # Used in class test. In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
 
     def print_clue(self):
-        print(*self._guess_state) # In Python 3 we can use the * as an unpacking operator and print the list separated by spaces.
+        print(*self._guess_state) # In Python 3 we can use the * as an unpacking operator and print the list separated by spaces. Probably better to use the 'join()' function like so print(" ".join(self._guess_state)) adding a space in the "" to space the letters out.
         print() # adds blank line after the clue for spacing.
         #for i in self._guess_state: # loops through each letter in self._guess_state and then prints it.
         #    print(i, end="") # Here we use the 'end=""' method to print the list on the same line. If you want a space between letters, just add a space in the string for end like this (end=" ")
+        return self._guess_state # Returns the current self._guess_state used in our _do_updates() function.
 
     
     def check_guess_matches(self, guessed_character):

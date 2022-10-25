@@ -21,8 +21,8 @@ class Director:
             self (Director): an instance of Director.
         """
 
-        self._parachute = Parachute() # ATTRIBUTE calls the Parachute() class and creates an instance of it called self._hider.
         self._is_playing = True # ATTRIBUTE sets the boolean 'True' to show we are currently playing
+        self._parachute = Parachute() # ATTRIBUTE calls the Parachute() class and creates an instance of it called self._hider.
         self._word = Word() # ATTRIBUTE calls the Word() class and creates an instance of it called self._word.
         self._terminal_service = TerminalService() # ATTRIBUTE calls the TerminalService() class and creates an instance of TerminalService() and assigns it to self._terminal_service
         self._guess = True # ATTRIBUTE this is a class variable for the guesses, default is set to True until overwritten by a function.
@@ -34,8 +34,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        #self._parachute.draw_chute() # Draws the initial parachute
-        #self._parachute.draw_man() # Draws the initial man
+
         while self._is_playing: # says, while 'self_is_playing' is True, keep running this loop.
             self._get_inputs() # 'get_inputs()' method. Gets user input from TerminalService()
             self._do_updates() # 'do_updates()' method. Advances the game one step
@@ -49,7 +48,7 @@ class Director:
         """
         self._word.print_clue()
         self._no_chute = self._parachute.erase_chute(self._guess) # Passes the boolean True or False from 'self._guess' to the 'erase_chute()' function in the Parachute() class. Receives the returned boolean from 'self._parachute.erase_chute()' and stores it in the 'no_chute' variable
-        print(self._no_chute)
+        # print(self._no_chute) # Used this line to test whether or not I was getting a boolean or None value returned from 'erase_chute()' in Parachute() class.
         if self._no_chute == None:
             letter_guess = self._terminal_service.read_text("\nGuess a letter [a-z]: ") # 'read_letter()' can have prompts to ask user for letter input.
             self._guess = self._word.check_guess_matches(letter_guess) # calls the 'guessed_letter()' function from the Word() class held in 'self._word' instance. Passes the guessed letter from user input in the previous line to that function then stores the returned True or False in the 'self._guess' value defined in class variables
@@ -68,7 +67,8 @@ class Director:
         #self._parachute.erase_chute(self._guess) # Passes the boolean True or False to the 'erase_chute()' function in the Parachute() class.
         while word_complete == False and self._no_chute == None:
             word_complete = self._word.word_match_complete() # We run this again to check and see if the word_complete is now true.
-            self._get_inputs()
+            if word_complete == False:
+                self._get_inputs()
         # if word_complete becomes True it goes 'to _do_outputs()'.            
 
 
@@ -84,8 +84,10 @@ class Director:
             self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
         
         else:
-            word = self._word.print_clue()
-            self._terminal_service.write_text(f"You did it! The word was {word}.")
+            word = self._word.print_clue() # This actually runs the 'print_clue()' function and prints it as the final completed word. It recieves the return (which is the completed word) from 'print_clue()' and stores it in the 'word' variable.
+            self._parachute.erase_chute(self._guess) # Passes the boolean True or False from 'self._guess' to the 'erase_chute()' function in the Parachute() class. Prints the chute one last time at whatever state it was in.
+            self._terminal_service.write_text(f"You did it! The word was: {''.join(word)}\n") # Here we use the 'join()' function to iterate through the string values in the list and join them toghther. If I wanted a space between each item I could put a space between the ''
+            # print("".join(word)) # Uncomment this to see how the 'join()' function works on ths list.
             self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
 
 
