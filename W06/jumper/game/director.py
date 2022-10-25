@@ -81,14 +81,31 @@ class Director:
         """
         if self._no_chute == True:
             self._terminal_service.write_text(f"Ya'll died foo. Your parachute is gone. See that 'x' for a head? That mean you dead.\n") # prints this out using the 'write_text()' function from 'TerminalService()'
-            self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
+            play_again = input("Play again? [y or n]: ").lower()
+            if play_again == "y":
+                self._word = Word() # ATTRIBUTE calls the Word() class and creates an instance of it called self._word. Did this to reset the random word
+                self._parachute = Parachute() # ATTRIBUTE calls the Parachute() class and creates an instance of it called self._hider. Did this to reset the parachute
+                self._is_playing = True
+            
+            else:
+                print() # Prints a blank line to make it look nicer when the program ends.
+                self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
         
         else:
             word = self._word.print_clue() # This actually runs the 'print_clue()' function and prints it as the final completed word. It recieves the return (which is the completed word) from 'print_clue()' and stores it in the 'word' variable.
             self._parachute.erase_chute(self._guess) # Passes the boolean True or False from 'self._guess' to the 'erase_chute()' function in the Parachute() class. Prints the chute one last time at whatever state it was in.
             self._terminal_service.write_text(f"You did it! The word was: {''.join(word)}\n") # Here we use the 'join()' function to iterate through the string values in the list and join them toghther. If I wanted a space between each item I could put a space between the ''
             # print("".join(word)) # Uncomment this to see how the 'join()' function works on ths list.
-            self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
+            play_again = input("Play again? [y or n]: ").lower()
+            if play_again == "y":
+                self._word = Word() # ATTRIBUTE calls the Word() class and creates an instance of it called self._word. Did this to reset the random word
+                self._parachute = Parachute() # ATTRIBUTE calls the Parachute() class and creates an instance of it called self._hider. Did this to reset the parachute
+                self._is_playing = True
+            
+            else:
+                print() # Prints a blank line to make it look nicer when the program ends.
+                self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
+            
 
 
 """ NEXT LINES FOR TESTING ONLY """
