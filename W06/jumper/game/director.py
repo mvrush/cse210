@@ -90,6 +90,7 @@ class Director:
                 self._is_playing = True
             
             elif play_again == "n":
+                self._terminal_service.write_text("Thanks for playing Jumper!")
                 print() # Prints a blank line to make it look nicer when the program ends.
                 self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
         
@@ -107,6 +108,7 @@ class Director:
                 self._is_playing = True
             
             elif play_again == "n":
+                self._terminal_service.write_text("Thanks for playing Jumper!")
                 print() # Prints a blank line to make it look nicer when the program ends.
                 self._is_playing = False # Changes 'self._is_playing' to False to end the game loop.
             
