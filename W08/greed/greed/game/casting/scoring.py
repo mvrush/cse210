@@ -1,12 +1,14 @@
 # This is the scoring class programmed by -Matt Rushton-
 # from game.casting.cast import Cast # Don't need this since we are catching the instance of 'class' from directory.py that was instantiated in __main__.py
+from game.casting.cast import Cast
 
-class Scoring:
+class Scoring(Cast):
     
     def __init__(self):
         #self._cast = Cast() # Don't need this anymore This creates an instance (instantiates) of our Cast() class giving us access to it's methods and public variables (I don't think the private ones)
         self._total_score = 0 # This adds another Attribute found only in our Scoring() class called 'self._total_score'. It holds our cumulative score
-    
+
+    """ #old way of doing it that was looping the scoring
     def set_score(self, cast): # recieves the 'cast' instance from the call in 'director.py' which is actually an instance of our 'Cast()' class instantiaed in __main__.py
         #self._total_score += 100 # This line for testing only
 
@@ -22,6 +24,17 @@ class Scoring:
             elif artifact.get_text() == "0":
                 print("It was a zero")
                 self._total_score -= 1
+        
+        return self._total_score
+    """
+    # New way of doing it where it just passes the 'text' value of the matched artifact
+    def set_score(self, text):
+        if text == "*":
+            print("It was an astrisk")
+            self._total_score += 1
+        elif text == "0":
+            print("It was a zero")
+            self._total_score -= 1
         
         return self._total_score
     
