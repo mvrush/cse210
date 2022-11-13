@@ -41,7 +41,7 @@ class Director:
             cast (Cast): The cast of actors.
         """
         robot = cast.get_first_actor("robots")
-        velocity = self._keyboard_service.get_direction()
+        velocity = self._keyboard_service.get_direction() # we limit the robots movement to left and right in the keyboard_service
         robot.set_velocity(velocity)        
 
     def _do_updates(self, cast):
@@ -57,6 +57,9 @@ class Director:
         banner.set_text(f"Score: {self._scoring.get_score()}") # This is where we will set our "Score: " banner. I accessed the 'get_score()' method directly.
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
+        # this sets the movement for our robot. It sends it to 'move_next()' and sets the loop across screen
+        # which is set by the max height and width of the screen.
+        # Get's 'move_next()' out or our Actor() class instantiated in 'robot' which gets it from the 'cast' instance (I think)
         robot.move_next(max_x, max_y)
         
         for artifact in artifacts:
