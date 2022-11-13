@@ -97,9 +97,10 @@ class Director:
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()): # Here, when the robot and artifact are in the same position, it runs the following lines.
                 self._scoring.set_score(artifact.get_text()) # Passes the value of 'text' from the matched artifact to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
-                cast.remove_actor("artifacts", artifact)
+                cast.remove_actor("artifacts", artifact) # This removes the artiface when the robot and artifact intersect.
                 
                 ### Add new artifact when the robot position and artifact position are the same (replaces the removed ones)
+                # I just took lines 103-125 right out of the CREATE ARTIFACT section of the __main__.py file
                 text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the string '*' or '0' {zero}.
                 #message = messages[n] # We won't be using messages anymore
 
