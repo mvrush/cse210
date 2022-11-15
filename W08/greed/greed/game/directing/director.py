@@ -1,17 +1,17 @@
-import random # import the random library to use below
+#import random # import the random library to use below BUT only when not using separate Rock and Gem classes
 
 from game.casting.scoring import Scoring
 from game.shared.point import Point # Had to import this so I could use Point() class to set velocity for the artifacts.
-from game.shared.color import Color # Had to import to regenerate artifacts
-from game.casting.artifact import Artifact # Had to import this so I could manipulate the Artifacts when removing and adding them after they are caught.
 from game.casting.gem import Gem # imports the Gem class so I can use it during regeneration and deletion
 from game.casting.rock import Rock # imports the Gem class so I can use it during regeneration and deletion
+#from game.shared.color import Color # Had to import to regenerate artifacts BUT only need to when not using separate Rock and Gem classes
+#from game.casting.artifact import Artifact # Had to import this so I could manipulate the Artifacts when removing and adding them after they are caught. BUT only need to when not using separate Rock and Gem classes
 
-### To regenerate artifacts I need these variable values
-CELL_SIZE = 15
-FONT_SIZE = 15
-COLS = 60 # This splits the width (x) into 60 columns
-ROWS = 40 # This splits the height (y) into 40 rows
+### To regenerate artifacts I need these variable values BUT not when using the separate rock and gem classes.
+#CELL_SIZE = 15
+#FONT_SIZE = 15
+#COLS = 60 # This splits the width (x) into 60 columns
+#ROWS = 40 # This splits the height (y) into 40 rows
 
 class Director:
     """A person who directs the game. 
@@ -93,9 +93,7 @@ class Director:
         #    if robot.get_position().equals(artifact.get_position()): # When the robot and artifact are in the same position, it will run the 'set_score()' function on the next line. We are calling 'get_position()' from our Actor() class.
                 #self._scoring.set_score(cast) # (old way I was doing it) Passes the 'cast' instance to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
         #        self._scoring.set_score(artifact.get_text()) # Passes the value of 'text' from the matched artifact to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
-                
-
-                #banner.set_text(f"Score: {self._scoring.get_score()}") # Don't need this line anymore because it updates the 'banner.set_text()' line earlier in the loop.   
+                   
         
         ### Remove artifacts when hit, create new Artifacts, also control the scoring        
         for artifact in artifacts:
@@ -104,7 +102,7 @@ class Director:
                 cast.remove_actor("artifacts", artifact) # This removes the artifact when the robot and artifact intersect.
                 
                 
-            ### the following works in the loop to replace the removed rock or gem.
+            ### the following is a loop within the loop to replace the removed rock or gem.
             # I think it would have been better to use a randomizer to either pass a randome text value of * or 0 to the 'add_remove_gem()' function
             # and just used one class for both rocks and gems but the teacher required a separate Rock and Gem class.    
                 if artifact.get_text() == "*": # looks at the value of the text for each artifact in loop
@@ -112,7 +110,7 @@ class Director:
                 else:
                     self._rock.add_remove_artifact(cast) # this will add an '0'
                 
-                """
+                """ THE FOLLOWING LINES ARE HOW TO RUN THIS WITHOUT THE SEPARATE ROCK AND GEM CLASSES                
                 ### Add new artifact when the robot position and artifact position are the same (replaces the removed ones)
                 # I just took the following lines right out of the CREATE ARTIFACT section of the __main__.py file
                 text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the string '*' or '0' {zero}.
@@ -138,10 +136,6 @@ class Director:
                 #artifact.set_message(message) # We don't need a message anymore.
                 cast.add_actor("artifacts", artifact)
                 
-                ### ADD new artifact when one get removed
-                #new_artifact = Artifact(self._columns, self._rows, self._cell_size, self._font_size)
-                #new_artifact.set_position(Point(new_artifact.get_position().get_x(), max_y))
-                #cast.add_actor("artifacts", new_artifact)
         ###
         """
         
