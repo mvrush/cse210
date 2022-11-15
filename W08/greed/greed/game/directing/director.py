@@ -93,7 +93,7 @@ class Director:
 
                 #banner.set_text(f"Score: {self._scoring.get_score()}") # Don't need this line anymore because it updates the 'banner.set_text()' line earlier in the loop.   
         
-        ### Remove hit artifacts create new Artifacts also control the scoring        
+        ### Remove artifacts when hit, create new Artifacts, also control the scoring        
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()): # Here, when the robot and artifact are in the same position, it runs the following lines.
                 self._scoring.set_score(artifact.get_text()) # Passes the value of 'text' from the matched artifact to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
