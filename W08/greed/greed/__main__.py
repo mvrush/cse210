@@ -90,7 +90,7 @@ def main():
     keyboard_service = KeyboardService(CELL_SIZE)
     video_service = VideoService(CAPTION, MAX_X, MAX_Y, CELL_SIZE, FRAME_RATE)
     director = Director(keyboard_service, video_service)
-    director.start_game(cast)
+    director.start_game(cast) # This is where it passes the instance of 'cast' to our director.py file. It actually runs an instance of Director() here.
 
 
 if __name__ == "__main__":
