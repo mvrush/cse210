@@ -1,28 +1,30 @@
 import random
 from game.casting.artifact import Artifact
-from game.casting.cast import Cast
 from game.shared.point import Point # Had to import this so I could use Point() class to set velocity for the artifacts.
 from game.shared.color import Color # Had to import to regenerate artifacts         
-
+            
+                
 ### To regenerate artifacts I need these variable values
 CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60 # This splits the width (x) into 60 columns
-ROWS = 40 # This splits the height (y) into 40 rows             
-                
+ROWS = 40 # This splits the height (y) into 40 rows
+
+
 class Gem(Artifact):
 
     def __init__(self):
-        super().__init__() # Using 'super()' and dot . notation invokes the Parent constructor from the Actor() class. Basically calls the Actor() class '__init__(self)' constructor and gives you access to all it's attributes.
-    
-    def add_remove_gem(self, cast): # Receives the instance of 'cast' created in __main__.py from the call to 'add_remove_gem()' in director.py
+        super().__init__() # Using 'super()' and dot . notation invokes the Parent constructor from the Actor() class. Basically calls the Actor() class '__init__(self)' constructor and gives you access to all it's attributes. 
+        self._text = '*'
+
+    def add_remove_artifact(self, cast): # Receives the instance of 'cast' created in __main__.py from the call to 'add_remove_gem()' in director.py
 
         # cast = Cast() # Creates an instance of Cast()
 
         ### Add new artifact when the robot position and artifact position are the same (replaces the removed ones)
         # I just took the following lines right out of the CREATE ARTIFACT section of the __main__.py file
-        text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the string '*' or '0' {zero}.
-        #message = messages[n] # We won't be using messages anymore
+        #text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the string '*' or '0' {zero}.
+        text = self._text
 
         x = random.randint(1, COLS - 1) # This sets a random value for our x (horizontal) position in the columns
         y = random.randint(1, ROWS - 1) # This sets a random value for our y (vertical) position in the rows

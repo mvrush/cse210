@@ -5,6 +5,7 @@ from game.shared.point import Point # Had to import this so I could use Point() 
 from game.shared.color import Color # Had to import to regenerate artifacts
 from game.casting.artifact import Artifact # Had to import this so I could manipulate the Artifacts when removing and adding them after they are caught.
 from game.casting.gem import Gem # imports the Gem class so I can use it during regeneration and deletion
+from game.casting.rock import Rock # imports the Gem class so I can use it during regeneration and deletion
 
 ### To regenerate artifacts I need these variable values
 CELL_SIZE = 15
@@ -33,6 +34,7 @@ class Director:
         self._video_service = video_service
         self._scoring = Scoring() # This intantiates an instance of the 'Scoring()' class so we can access it's methods and variables
         self._gem = Gem()
+        self._rock = Rock()
         
     def start_game(self, cast): # This recieves the 'cast' instantiation from '__main__.py'. It's an instance of our 'Cast()' class that's been populated.
         """Starts the game using the given cast. Runs the main game loop.
@@ -101,11 +103,18 @@ class Director:
                 self._scoring.set_score(artifact.get_text()) # Passes the value of 'text' from the matched artifact to scoring. After running this function, the score is changed and reflected in our 'banner.set_text()' line above.
                 cast.remove_actor("artifacts", artifact) # This removes the artifact when the robot and artifact intersect.
                 
-                self._gem.add_remove_gem(cast) # have to pass this instance of 'cast' to the Gem() class
+                
+            ### the following works in the loop to replace the removed rock or gem.
+            # I think it would have been better to use a randomizer to either pass a randome text value of * or 0 to the 'add_remove_gem()' function
+            # and just used one class for both rocks and gems but the teacher required a separate Rock and Gem class.    
+                if artifact.get_text() == "*": # looks at the value of the text for each artifact in loop
+                    self._gem.add_remove_artifact(cast) # this will add an '*'
+                else:
+                    self._rock.add_remove_artifact(cast) # this will add an '0'
                 
                 """
                 ### Add new artifact when the robot position and artifact position are the same (replaces the removed ones)
-                # I just took lines 103-125 right out of the CREATE ARTIFACT section of the __main__.py file
+                # I just took the following lines right out of the CREATE ARTIFACT section of the __main__.py file
                 text = random.choice(['*', '0']) # This line uses the random.choice() function to choose between the string '*' or '0' {zero}.
                 #message = messages[n] # We won't be using messages anymore
 
