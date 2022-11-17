@@ -35,7 +35,9 @@ class DrawActorsAction(Action):
         self._video_service.clear_buffer()
         #self._video_service.draw_actor(food) # Removed for Cycle. Don't need food.
         self._video_service.draw_actors(segments)
-        snake.grow_tail(1) # # uses our instance of 'cast.get_first_actor("cycles")' held in the 'snake' variable and calls the 'grow_tail()' method there. I specified 1 to grow the tail 1 length.
+        # The next line uses our instance of 'cast.get_first_actor("cycles")' held in the 'snake' variable and calls the 'grow_tail()' method which is defined in the Cycle1() class. 
+        # I specified 1 to grow the tail 1 length. The Cycle1() class added this to the 'cycles' group in cast in __main__.py.
+        snake.grow_tail(1)
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)
         self._video_service.flush_buffer()
