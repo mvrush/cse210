@@ -20,7 +20,8 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction = Point(constants.CELL_SIZE, 0)
+        self._direction = Point(constants.CELL_SIZE, 0) # Default direction was set with the 'constants.CELL_SIZE)' which is 15. So it moves 1 cell causing movement by default.
+        #self._direction = Point(0, 0) # Set this to Point(0, 0) so that the cycle will not move.
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -45,5 +46,5 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s'):
             self._direction = Point(0, constants.CELL_SIZE)
         
-        snake = cast.get_first_actor("cycles")
-        snake.turn_head(self._direction)
+        cycle = cast.get_first_actor("cycles")
+        cycle.turn_head(self._direction)
