@@ -16,6 +16,6 @@ class MoveActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        actors = cast.get_all_actors()
-        for actor in actors:
-            actor.move_next()
+        actors = cast.get_all_actors() # Gets all the actors from cast and assigns it to the 'actors' variable.
+        for actor in actors: # loops through each actor and tells it to move using the 'move_next()' method below.
+            actor.move_next() # This 'move_next()' method comes from the Actor() class insantiated from 'cast' passed to the 'execute()' function above.
