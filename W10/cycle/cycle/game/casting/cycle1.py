@@ -34,18 +34,24 @@ class Cycle1(Actor):
     def get_head(self):
         return self._segments[0]
 
-    def grow_tail(self, number_of_segments):
+    def grow_tail(self, cast, number_of_segments): # Receives the instance of 'cast' and 'number_of_segments' values from 'snake.grow_tail(cast, 1)' found in draw_actors_action.py
         for i in range(number_of_segments):
             tail = self._segments[-1]
             velocity = tail.get_velocity()
             offset = velocity.reverse()
             position = tail.get_position().add(offset)
             
+            message = cast.get_first_actor("messages") # uses the instance of 'cast' to pull the message
+            #print(message) # used for testing to see what I got for a message
+
             segment = Actor()
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text("#")
-            segment.set_color(constants.GREEN)
+            if message == None: # checks for a message object. If 'None' writes segments in LIGHT_BLUE
+                segment.set_color(constants.LIGHT_BLUE)
+            else:
+                segment.set_color(constants.WHITE) # if there is a message object, writes segments in WHITE
             self._segments.append(segment)
 
     def turn_head(self, velocity):
