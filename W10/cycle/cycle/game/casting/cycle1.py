@@ -13,7 +13,7 @@ class Cycle1(Actor):
         _points (int): The number of points the food is worth.
     """
     def __init__(self):
-        super().__init__()
+        super().__init__() # This gives us access to all variables and methods in the Actor() class
         self._segments = []
         self._prepare_body()
 
