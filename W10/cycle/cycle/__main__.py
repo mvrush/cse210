@@ -25,6 +25,7 @@ def main():
     cast.add_actor("cycles", Cycle1()) # Creates the "cycles" group and adds it to cast using the methods found in Cycle1() class
     cast.add_actor("cycles", Cycle2()) # Creates the "cycles" group and adds it to cast using the methods found in Cycle1() class
     cast.add_actor("scores", Score())
+    # print(cast.get_actors("cycles")) # For troubleshooting, shows in the console that we have 2 cycles in the "cycles" group now.
    
     # start the game
     keyboard_service = KeyboardService()
