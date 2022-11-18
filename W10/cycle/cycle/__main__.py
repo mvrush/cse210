@@ -6,7 +6,8 @@ from game.casting.score import Score
 from game.casting.cycle1 import Cycle1
 from game.casting.cycle2 import Cycle2
 from game.scripting.script import Script
-from game.scripting.control_actors_action import ControlActorsAction
+from game.scripting.control_cycle1_action import ControlCycle1Action
+from game.scripting.control_cycle2_action import ControlCycle2Action
 from game.scripting.move_actors_action import MoveActorsAction
 from game.scripting.handle_collisions_action import HandleCollisionsAction
 from game.scripting.draw_actors_action import DrawActorsAction
@@ -22,8 +23,8 @@ def main():
     # create the cast
     cast = Cast()
     #cast.add_actor("foods", Food())
-    cast.add_actor("cycles", Cycle1()) # Creates the "cycles" group and adds it to cast using the methods found in Cycle1() class
-    cast.add_actor("cycles", Cycle2()) # Creates the "cycles" group and adds it to cast using the methods found in Cycle1() class
+    cast.add_actor("cycles", Cycle1()) # Creates the "cycles" group and adds cycle1 to cast using the methods found in Cycle1() class
+    cast.add_actor("cycles", Cycle2()) # Finds the "cycles" group and adds cycle2 to cast using the methods found in Cycle2() class
     cast.add_actor("scores", Score())
     # print(cast.get_actors("cycles")) # For troubleshooting, shows in the console that we have 2 cycles in the "cycles" group now.
    
@@ -32,7 +33,8 @@ def main():
     video_service = VideoService()
 
     script = Script()
-    script.add_action("input", ControlActorsAction(keyboard_service))
+    script.add_action("input", ControlCycle1Action(keyboard_service))
+    script.add_action("input", ControlCycle2Action(keyboard_service))
     script.add_action("update", MoveActorsAction())
     script.add_action("update", HandleCollisionsAction())
     script.add_action("output", DrawActorsAction(video_service))
