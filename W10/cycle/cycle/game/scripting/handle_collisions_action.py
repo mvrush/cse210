@@ -55,13 +55,51 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        cycle1 = cast.get_first_actor("cycles")
-        head = cycle1.get_segments()[0]
-        segments = cycle1.get_segments()[1:]
+        # Get both cycles
+        cycles = cast.get_actors("cycles") # loads all the cycles on the 'cycles' list
         
-        for segment in segments:
-            if head.get_position().equals(segment.get_position()):
+        #cycle1 = cast.get_first_actor("cycles")
+        cycle1 = cycles[0] # pulls the cycle at index 0
+        head_cycle1 = cycle1.get_segments()[0]
+        segments_cycle1 = cycle1.get_segments()[1:] 
+
+        #cycle2 = cast.get_second_actor("cycles")
+        cycle2 = cycles[1] # pulls the cycle at index 1
+        head_cycle2 = cycle2.get_segments()[0]
+        segments_cycle2 = cycle2.get_segments()[1:]
+
+        # Check to see if both cycles hit each other
+        if head_cycle1.get_position().equals(head_cycle2.get_position()):
+            self._is_game_over = True
+
+        # Check for collisions on cycle1's trail.
+        for segment in segments_cycle1:
+            # Check to see if cycle1 crashes into it's own trail.
+            if head_cycle1.get_position().equals(segment.get_position()):
                 self._is_game_over = True
+            
+            # Check to see if cycle2 crashes into cycle1's trail ### THIS DOES NOT WORK ###
+            if head_cycle2.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+        
+        # Check for collisions on cycle2's trail.
+        for segment in segments_cycle2:
+            # Check to see if cycle2 crashes into it's own trail.
+            if head_cycle2.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+
+            # Check to see if cycle1 crashes into cycle2's trail.
+            if head_cycle1.get_position().equals(segment.get_position()):
+                self._is_game_over = True
+
+        
+
+
+
+
+        
+
+
         
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the snake and food white if the game is over.

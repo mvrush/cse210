@@ -61,17 +61,17 @@ class Cast:
         """
         result = None
         if group in self._actors.keys():
-            result = self._actors[group][0] # pulls the actor out of index position 2
+            result = self._actors[group][0] # pulls the actor out of index position 0
         return result
 
     def get_second_actor(self, group):
-        """Gets the first actor in the given group.
+        """Gets the second actor in the given group.
         
         Args:
             group (string): The name of the group.
             
         Returns:
-            List: The first actor in the group.
+            List: The second actor in the group.
         """
         result = None
         if group in self._actors.keys():
