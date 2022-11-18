@@ -1,9 +1,10 @@
 import constants
 from game.casting.actor import Actor
+from game.casting.cycle1 import Cycle1
 from game.shared.point import Point
 
 
-class Cycle1(Actor):
+class Cycle2(Cycle1):
     """
     A long limbless reptile.
     
@@ -49,7 +50,7 @@ class Cycle1(Actor):
             segment.set_velocity(velocity)
             segment.set_text("#")
             if message == None: # checks for a message object. If 'None' writes segments in LIGHT_BLUE
-                segment.set_color(constants.LIGHT_BLUE)
+                segment.set_color(constants.LIGHT_YELLOW)
             else:
                 segment.set_color(constants.WHITE) # if there is a message object, writes segments in WHITE. You only get a message object when game over.
             self._segments.append(segment)
@@ -58,14 +59,14 @@ class Cycle1(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        x = int(constants.MAX_X / 8) # set this to divide by 8 so it puts it in the first 1/8th of the screen (left). If you want it on the right side, make it -8.
-        y = int(constants.MAX_Y / -20) # Set this to divide by -20 so it starts at the bottom 1/20th of the screen. If you want it on the top, make it 20.
+        x = int(constants.MAX_X / 2)
+        y = int(constants.MAX_Y / 2)
 
         for i in range(constants.SNAKE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y) # Looks at the value of x, subtracts the index position for each length of the snake, multiplies it by the CELL_SIZE for the X position, just gives the y value for Y position
             velocity = Point(1 * constants.CELL_SIZE, 0) # Sets the velocity to 1 times the CELL_SIZE(15) for X and 0 for Y.
             text = "8" if i == 0 else "#" # Says draw an "8" in index position '0' for the snake head. Every other index position is a "#"
-            color = constants.YELLOW if i == 0 else constants.LIGHT_BLUE # Says draw index position 0 as "YELLOW", everything else "LIGHT_BLUE"
+            color = constants.YELLOW if i == 0 else constants.LIGHT_YELLOW # Says draw index position 0 as "YELLOW", everything else "LIGHT_BLUE"
             
             segment = Actor()
             segment.set_position(position)

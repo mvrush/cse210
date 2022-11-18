@@ -4,6 +4,7 @@ from game.casting.cast import Cast
 #from game.casting.food import Food
 from game.casting.score import Score
 from game.casting.cycle1 import Cycle1
+from game.casting.cycle2 import Cycle2
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
@@ -22,6 +23,7 @@ def main():
     cast = Cast()
     #cast.add_actor("foods", Food())
     cast.add_actor("cycles", Cycle1()) # Creates the "cycles" group and adds it to cast using the methods found in Cycle1() class
+    cast.add_actor("cycles", Cycle2()) # Creates the "cycles" group and adds it to cast using the methods found in Cycle1() class
     cast.add_actor("scores", Score())
    
     # start the game

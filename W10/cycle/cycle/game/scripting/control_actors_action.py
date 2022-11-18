@@ -20,7 +20,7 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction = Point(constants.CELL_SIZE, 0) # Default direction was set with the 'constants.CELL_SIZE)' which is 15. So it moves 1 cell causing movement by default.
+        self._direction = Point(0, -constants.CELL_SIZE) # Default direction was set with the '-constants.CELL_SIZE)' which is 15. So it moves 1 cell negative(up) on the y-axis causing movement by default.
         #self._direction = Point(0, 0) # Set this to Point(0, 0) so that the cycle will not move.
 
     def execute(self, cast, script):
