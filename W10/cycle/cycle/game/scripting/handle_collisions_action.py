@@ -90,14 +90,7 @@ class HandleCollisionsAction(Action):
 
             # Check to see if cycle1 crashes into cycle2's trail.
             if head_cycle1.get_position().equals(segment.get_position()):
-                self._is_game_over = True
-
-        
-
-
-
-
-        
+                self._is_game_over = True        
 
 
         
