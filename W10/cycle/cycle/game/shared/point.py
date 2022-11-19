@@ -41,7 +41,7 @@ class Point:
         Returns: 
             boolean: True if both x and y are equal; false if otherwise.
         """
-        #return self._x == other.get_x() and self._y == other.get_y() # This was the original line
+        #return self._x == other.get_x() and self._y == other.get_y() # This was the original line looking for an exact position match.
         return abs(self._x - other.get_x()) < 10 and abs(self._y - other.get_y()) < 10 # Had to rewrite this line for more tolerance instead of a perfect match.
 
     def get_x(self):
