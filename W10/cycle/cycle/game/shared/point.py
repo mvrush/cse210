@@ -42,7 +42,10 @@ class Point:
             boolean: True if both x and y are equal; false if otherwise.
         """
         #return self._x == other.get_x() and self._y == other.get_y() # This was the original line looking for an exact position match.
-        return abs(self._x - other.get_x()) < 10 and abs(self._y - other.get_y()) < 10 # Had to rewrite this line for more tolerance instead of a perfect match.
+        # Had to rewrite this line for more tolerance instead of a perfect match. 
+        # I basically says, get an absolute value for the primary x value minus the other x value and if that is less than 10, it's a match. It does the same for y.
+        # This way, there is a tolerance of less than 10 variation in the two points. An absolute number becomes a positive value if it's a negative value. i.e. -10 becomes 10
+        return abs(self._x - other.get_x()) < 10 and abs(self._y - other.get_y()) < 10
 
     def get_x(self):
         """Gets the horizontal distance.
