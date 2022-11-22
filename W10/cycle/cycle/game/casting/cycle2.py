@@ -41,8 +41,9 @@ class Cycle2(Cycle1):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        x = int(constants.MAX_X / 2)
-        y = int(constants.MAX_Y / 2)
+        # You can tweak the following x,y values to decide where to start the cycle. To adjust their movement direction go to scripting/control_cycles_action.
+        x = int(constants.MAX_X / 2) # set this to divide by 8 so it puts it in the first 1/8th of the screen (left). If you want it on the right side, make it -8. Or if you want the middle of the screen, set to '2'.
+        y = int(constants.MAX_Y - 15) # For some reason, setting to MAX_Y put it at the top of the screen (with a 15px space allowance left for the scoring banner). I subtracted 15 to get it right at the top of the screen.
 
         for i in range(constants.SNAKE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y) # Looks at the value of x, subtracts the index position for each length of the snake, multiplies it by the CELL_SIZE for the X position, just gives the y value for Y position
