@@ -6,12 +6,12 @@ from game.shared.point import Point
 # This class is derived from Cycle1() but I have left all methods and variables in it.
 class Cycle2(Cycle1):
     """
-    A long limbless reptile.
+    An amazing Cycle that leaves a colored trail of barrier light.
     
-    The responsibility of Snake is to move itself.
+    The responsibility of Cycle is to move itself and leave a trail.
 
     Attributes:
-        _points (int): The number of points the food is worth.
+        _segments = a list of trail segments.
     """
     def __init__(self):
         super().__init__() # This gives us access to all variables and methods in the Actor() class
