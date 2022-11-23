@@ -22,6 +22,7 @@ FIELD_LEFT = 0
 FIELD_RIGHT = SCREEN_WIDTH
 
 # FONT
+#FONT_FILE = "batter/assets/fonts/zorque.otf" # Have to remove 'batter/' from the path because we are starting in the 'batter' folder already.
 FONT_FILE = "batter/assets/fonts/zorque.otf"
 FONT_SMALL = 32
 FONT_LARGE = 48
@@ -56,6 +57,7 @@ IN_PLAY = 3
 GAME_OVER = 4
 
 # LEVELS
+#LEVEL_FILE = "batter/assets/data/level-{:03}.txt" # Need to take 'batter/' off this path since that's the directory we're starting from
 LEVEL_FILE = "batter/assets/data/level-{:03}.txt"
 BASE_LEVELS = 5
 
