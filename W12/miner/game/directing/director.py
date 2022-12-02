@@ -37,7 +37,7 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        robot = cast.get_first_actor("robots")
+        robot = cast.get_single_actor("robots", 0)
         velocity = self._keyboard_service.get_direction()
         robot.set_velocity(velocity)        
 
@@ -47,11 +47,15 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        banner = cast.get_first_actor("banners")
-        robot = cast.get_first_actor("robots")
+        banner = cast.get_single_actor("banners", 0)
+        banner_gold = cast.get_single_actor("banners", 1) # Will need to overwrite these with 'set_text()' like we do for the main banner when we score
+        banner_silver = cast.get_single_actor("banners", 2)
+        banner_coal = cast.get_single_actor("banners", 3)
+        robot = cast.get_single_actor("robots", 0)
         artifacts = cast.get_actors("artifacts")
 
         banner.set_text("")
+        #banner_gold.set_text(f"Gold: 100") # We created the Gold banner in __main__.py but we'll need to overwrite it with the calculated score like we did in Greed but using the same method we write the banner text.
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)

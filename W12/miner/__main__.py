@@ -21,7 +21,7 @@ CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60
 ROWS = 40
-CAPTION = "Robot Finds Kitten"
+CAPTION = "Miner"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/batter/assets/data/messages.txt"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
@@ -32,13 +32,34 @@ def main():
     # create the cast
     cast = Cast()
     
-    # create the banner
+    # create the banners
     banner = Actor()
     banner.set_text("")
     banner.set_font_size(FONT_SIZE)
     banner.set_color(WHITE)
-    banner.set_position(Point(CELL_SIZE, 0))
+    banner.set_position(Point(CELL_SIZE, 0)) # Sets X to CELL_SIZE(15) and Y to 0 for placement in top left corner
     cast.add_actor("banners", banner)
+
+    banner_gold = Actor()
+    banner_gold.set_text("Gold: 0")
+    banner_gold.set_font_size(FONT_SIZE)
+    banner_gold.set_color(WHITE)
+    banner_gold.set_position(Point(CELL_SIZE, CELL_SIZE * 1)) # Sets X to CELL_SIZE(15) and Y to CELL_SIZE *1(15)
+    cast.add_actor("banners", banner_gold)
+
+    banner_silver = Actor()
+    banner_silver.set_text("Silver: 0")
+    banner_silver.set_font_size(FONT_SIZE)
+    banner_silver.set_color(WHITE)
+    banner_silver.set_position(Point(CELL_SIZE, CELL_SIZE * 2)) # Sets X to CELL_SIZE(15) and Y to CELL_SIZE *2(30)
+    cast.add_actor("banners", banner_silver)
+
+    banner_coal = Actor()
+    banner_coal.set_text("Coal: 0")
+    banner_coal.set_font_size(FONT_SIZE)
+    banner_coal.set_color(WHITE)
+    banner_coal.set_position(Point(CELL_SIZE, CELL_SIZE * 3)) # Sets X to CELL_SIZE(15) and Y to CELL_SIZE *2(45)
+    cast.add_actor("banners", banner_coal)
     
     # create the robot
     x = int(MAX_X / 2)
@@ -59,7 +80,7 @@ def main():
 
     for n in range(DEFAULT_ARTIFACTS):
         text = chr(random.randint(33, 126))
-        message = messages[n]
+        message = messages[n] # Message will tell user what they found
 
         x = random.randint(1, COLS - 1)
         y = random.randint(1, ROWS - 1)
