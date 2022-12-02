@@ -50,7 +50,7 @@ class Cast:
             results.extend(self._actors[group])
         return results
 
-    def get_single_actor(self, group, actor_number):
+    def get_single_actor(self, group, actor_number): # changed this from get_first_actor() to accept a parameter for the index number of the actor I want
         """Gets the first actor in the given group.
         
         Args:
