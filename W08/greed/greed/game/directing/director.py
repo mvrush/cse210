@@ -76,7 +76,7 @@ class Director:
         for artifact in artifacts:
             artifact.set_velocity(velocity)
 
-        banner.set_text(f"Score: {self._scoring.get_score()}") # This is where we will set our "Score: " banner. I accessed the 'get_score()' method directly.
+        banner.set_text(f"Score: {self._scoring.get_score()}") # This is where we will set our "Score: " banner. I accessed the 'get_score()' method directly to set the text.
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         # this sets the movement for our robot. It sends it to 'move_next()' and sets the loop across screen
