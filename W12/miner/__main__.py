@@ -24,7 +24,10 @@ ROWS = 40
 CAPTION = "Miner"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/batter/assets/data/messages.txt"
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 40
+GOLD_ARTIFACTS = 6
+SILVER_ARTIFACTS = 12
+COAL_ARTIFACTS = 22
+# DEFAULT_ARTIFACTS = 40 # Was used in RFK
 
 
 def main():
@@ -78,9 +81,10 @@ def main():
         data = file.read()
         messages = data.splitlines()
 
-    for n in range(DEFAULT_ARTIFACTS):
-        text = chr(random.randint(33, 126))
-        message = messages[n] # Message will tell user what they found
+    for n in range(GOLD_ARTIFACTS):
+        text = "G" # This sets our gold character as a G
+        value = random.choice([100, 500]) # This line uses random to assign a value of either 500 or 1000
+        message = f"You have found {value} Gold!" # Message will tell user what they found. Instead of random messages like RFK we have set a message for Gold
 
         x = random.randint(1, COLS - 1)
         y = random.randint(1, ROWS - 1)
@@ -97,6 +101,55 @@ def main():
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
+        artifact.set_value(value) # Passes our 'value' defined above to instance of 'Artifact()' class called 'artifact' to use the 'set_value()' method
+        artifact.set_message(message)
+        cast.add_actor("artifacts", artifact)
+
+    for n in range(SILVER_ARTIFACTS):
+        text = "S" # This sets our Silver character as an S
+        value = random.choice([100, 500]) # This line uses random to assign a value of either 100 or 500
+        message = f"You have found {value} Silver!" # Message will tell user what they found. Instead of random messages like RFK we have set a message for Silver
+
+        x = random.randint(1, COLS - 1)
+        y = random.randint(1, ROWS - 1)
+        position = Point(x, y)
+        position = position.scale(CELL_SIZE)
+
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        color = Color(r, g, b)
+        
+        artifact = Artifact()
+        artifact.set_text(text)
+        artifact.set_font_size(FONT_SIZE)
+        artifact.set_color(color)
+        artifact.set_position(position)
+        artifact.set_value(value) # Passes our 'value' defined above to instance of 'Artifact()' class called 'artifact' to use the 'set_value()' method
+        artifact.set_message(message)
+        cast.add_actor("artifacts", artifact)
+    
+    for n in range(COAL_ARTIFACTS):
+        text = "C" # This sets our Coal character as a C
+        value = random.choice([200, 500, 800, 1000]) # This line uses random to assign a value of either 100 or 500
+        message = f"You have found {value} Coal!" # Message will tell user what they found. Instead of random messages like RFK we have set a message for Coal
+
+        x = random.randint(1, COLS - 1)
+        y = random.randint(1, ROWS - 1)
+        position = Point(x, y)
+        position = position.scale(CELL_SIZE)
+
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        color = Color(r, g, b)
+        
+        artifact = Artifact()
+        artifact.set_text(text)
+        artifact.set_font_size(FONT_SIZE)
+        artifact.set_color(color)
+        artifact.set_position(position)
+        artifact.set_value(value) # Passes our 'value' defined above to instance of 'Artifact()' class called 'artifact' to use the 'set_value()' method
         artifact.set_message(message)
         cast.add_actor("artifacts", artifact)
     
