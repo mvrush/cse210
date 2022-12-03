@@ -37,7 +37,7 @@ class Artifact(Actor): # Creates the Artifact() class and gets inheritance from 
         Returns:
             integer: The value.
         """
-        return self._message
+        return self._value
     
     def set_value(self, value): # This function sets the value of 'self._value' by taking a value for 'value' from whatever calls the function and sets a message value. Basically gives it public access. It's a setter function.
         """Updates the value to the given one.

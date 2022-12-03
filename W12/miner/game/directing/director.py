@@ -55,21 +55,25 @@ class Director:
         banner_silver = cast.get_single_actor("banners", 2)
         banner_coal = cast.get_single_actor("banners", 3)
         robot = cast.get_single_actor("robots", 0)
-        artifacts = cast.get_actors("artifacts")
+        artifacts = cast.get_actors("artifacts") # The artifacts are coming from our instance of 'cast' passed from '__main__.py'
 
+        # Set the text for the banners. None for message text, current score for the other three.
         banner.set_text("")
-        banner_gold.set_text(f"Gold: {self._scoring.get_score('gold')}")
+        banner_gold.set_text(f"Gold: {self._scoring.get_score('gold')}") # We created the Gold banner in __main__.py but we'll need to overwrite it with the calculated score like we did in Greed but using the same method we write the banner text.
         banner_silver.set_text(f"Silver: {self._scoring.get_score('silver')}")
         banner_coal.set_text(f"Coal: {self._scoring.get_score('coal')}")
-        #banner_gold.set_text(f"Gold: 100") # We created the Gold banner in __main__.py but we'll need to overwrite it with the calculated score like we did in Greed but using the same method we write the banner text.
+
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)    
+                message = artifact.get_message() # Gets the 'message' value for the artifact, assigns it to the 'message' variable
+                text = artifact.get_text() # Gets the 'text' value for the artifact, assigns it to the 'text' variable. Text will hold either 'G', 'S', or 'C'.
+                score = artifact.get_value() # Gets the 'value' value for the artifact and assigns it to the 'score' variable
+                banner.set_text(message)
+                self._scoring.set_score(text, score)  # Call instance of Scoring() class, use 'set_score()' method and passes it the value of the artifact using the 'score' variable
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
