@@ -58,6 +58,9 @@ class Director:
         artifacts = cast.get_actors("artifacts")
 
         banner.set_text("")
+        banner_gold.set_text(f"Gold: {self._scoring.get_score('gold')}")
+        banner_silver.set_text(f"Silver: {self._scoring.get_score('silver')}")
+        banner_coal.set_text(f"Coal: {self._scoring.get_score('coal')}")
         #banner_gold.set_text(f"Gold: 100") # We created the Gold banner in __main__.py but we'll need to overwrite it with the calculated score like we did in Greed but using the same method we write the banner text.
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
