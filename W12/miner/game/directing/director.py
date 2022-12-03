@@ -1,3 +1,5 @@
+from game.casting.scoring import Scoring
+
 class Director:
     """A person who directs the game. 
     
@@ -17,6 +19,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._scoring = Scoring() # This intantiates an instance of the 'Scoring()' class so we can access it's methods and variables
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
