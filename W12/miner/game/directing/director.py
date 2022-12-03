@@ -58,7 +58,7 @@ class Director:
         artifacts = cast.get_actors("artifacts") # The artifacts are coming from our instance of 'cast' passed from '__main__.py'
 
         # Set the text for the banners. None for message text, current score for the other three.
-        banner.set_text("")
+        #banner.set_text("") # I don't have to do this everytime because I don't want the banner erased each time through.
         banner_gold.set_text(f"Gold: {self._scoring.get_score('gold')}") # We created the Gold banner in __main__.py but we'll need to overwrite it with the calculated score like we did in Greed but using the same method we write the banner text.
         banner_silver.set_text(f"Silver: {self._scoring.get_score('silver')}")
         banner_coal.set_text(f"Coal: {self._scoring.get_score('coal')}")
@@ -74,6 +74,7 @@ class Director:
                 score = artifact.get_value() # Gets the 'value' value for the artifact and assigns it to the 'score' variable
                 banner.set_text(message)
                 self._scoring.set_score(text, score)  # Call instance of Scoring() class, use 'set_score()' method and passes it the value of the artifact using the 'score' variable
+                cast.remove_actor("artifacts", artifact) # After banner is set and score is set, it removes the artifact. If I don't do this, it rolls up the score during each frame refresh.
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
