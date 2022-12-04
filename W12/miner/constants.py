@@ -1,13 +1,43 @@
+import os
 import pathlib
 from game.casting.color import Color
 
+
+
 # -------------------------------------------------------------------------------------------------- 
-# GENERAL GAME CONSTANTS
+# MINER GAME CONSTANTS
+# --------------------------------------------------------------------------------------------------
+
+FRAME_RATE = 12
+MAX_X = 900
+MAX_Y = 600
+CELL_SIZE = 15
+FONT_SIZE = 15
+COLS = 60
+ROWS = 40
+CAPTION = "Miner"
+DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/batter/assets/data/messages.txt"
+WHITE = Color(255, 255, 255)
+
+# MINERALS
+GOLD_ARTIFACTS = 6
+SILVER_ARTIFACTS = 12
+COAL_ARTIFACTS = 22
+MINERAL_IMAGE = "batter/assets/images/minerals.png"
+
+#MINER
+MINER_IMAGE = "batter/assets/images/miner.png"
+
+
+
+
+# -------------------------------------------------------------------------------------------------- 
+# GENERAL GAME CONSTANTS (The following all came from Batter)
 # -------------------------------------------------------------------------------------------------- 
 
 # GAME
 GAME_NAME = "Batter"
-FRAME_RATE = 60
+#FRAME_RATE = 60
 
 # SCREEN
 SCREEN_WIDTH = 1040

@@ -38,12 +38,14 @@ class VideoService:
         Args:
             actor (Actor): The actor to draw.
         """ 
+        #image = actor.get_image() # This line just pulls the address to the image and then it holds the text
         text = actor.get_text()
         x = actor.get_position().get_x()
         y = actor.get_position().get_y()
         font_size = actor.get_font_size()
         color = actor.get_color().to_tuple()
         pyray.draw_text(text, x, y, font_size, color)
+        #pyray.draw_text(image, x, y, font_size, color) # This will just draw the text of the path to the image
         
     def draw_actors(self, actors):
         """Draws the text for the given list of actors on the screen.

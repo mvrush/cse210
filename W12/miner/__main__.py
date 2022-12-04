@@ -1,5 +1,6 @@
-import os
 import random
+
+from constants import *
 
 from game.casting.actor import Actor
 from game.casting.artifact import Artifact
@@ -12,22 +13,6 @@ from game.services.video_service import VideoService
 
 from game.shared.color import Color
 from game.shared.point import Point
-
-
-FRAME_RATE = 12
-MAX_X = 900
-MAX_Y = 600
-CELL_SIZE = 15
-FONT_SIZE = 15
-COLS = 60
-ROWS = 40
-CAPTION = "Miner"
-DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/batter/assets/data/messages.txt"
-WHITE = Color(255, 255, 255)
-GOLD_ARTIFACTS = 6
-SILVER_ARTIFACTS = 12
-COAL_ARTIFACTS = 22
-# DEFAULT_ARTIFACTS = 40 # Was used in RFK
 
 
 def main():
@@ -71,6 +56,7 @@ def main():
 
     robot = Actor()
     robot.set_text("#")
+    robot.set_image(MINER_IMAGE)
     robot.set_font_size(FONT_SIZE)
     robot.set_color(WHITE)
     robot.set_position(position)
@@ -98,6 +84,7 @@ def main():
         
         artifact = Artifact()
         artifact.set_text(text)
+        artifact.set_image(MINERAL_IMAGE)
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)

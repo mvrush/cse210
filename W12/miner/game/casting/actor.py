@@ -1,3 +1,5 @@
+from constants import *
+
 from game.shared.color import Color
 from game.shared.point import Point
 
@@ -23,6 +25,7 @@ class Actor:
         self._color = Color(255, 255, 255)
         self._position = Point(0, 0)
         self._velocity = Point(0, 0)
+        self._image = MINERAL_IMAGE # We use the MINERAL_IMAGE from constants as a placeholder
 
     def get_color(self):
         """Gets the actor's color as a tuple of three ints (r, g, b).
@@ -55,6 +58,14 @@ class Actor:
             string: The actor's textual representation.
         """
         return self._text
+
+    def get_image(self):
+        """Gets the actor's textual representation.
+        
+        Returns:
+            string: The actor's textual representation.
+        """
+        return self._image
 
     def get_velocity(self):
         """Gets the actor's speed and direction.
@@ -107,6 +118,14 @@ class Actor:
             text (string): The given value.
         """
         self._text = text
+    
+    def set_image(self, image):
+        """Gets the actor's textual representation.
+        
+        Returns:
+            string: The actor's textual representation.
+        """
+        self._image = image
 
     def set_velocity(self, velocity):
         """Updates the velocity to the given one.
