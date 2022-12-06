@@ -1,7 +1,3 @@
-#originally from Batter
-from game.casting.text import Text
-
-#brought in from RFK
 from constants import *
 
 from game.shared.color import Color
@@ -9,18 +5,20 @@ from game.shared.point import Point
 
 
 class Actor:
-    """A thing that participates in the game."""
+    """A visible, moveable thing that participates in the game. 
     
-    def __init__(self, debug = False):
-        #Originally from Batter
-        """Constructs a new Actor using the given group and id.
-        
-        Args:
-            group: A string containing the actor's group name.
-            id: A number that uniquely identifies the actor within the group.
-        """
-        self._debug = debug
-        #brought in from RFK
+    The responsibility of Actor is to keep track of its appearance, position and velocity in 2d 
+    space.
+
+    Attributes:
+        _text (string): The text to display
+        _font_size (int): The font size to use.
+        _color (Color): The color of the text.
+        _position (Point): The screen coordinates.
+        _velocity (Point): The speed and direction.
+    """
+
+    def __init__(self):
         """Constructs a new Actor."""
         self._text = ""
         self._font_size = 15
@@ -28,17 +26,7 @@ class Actor:
         self._position = Point(0, 0)
         self._velocity = Point(0, 0)
         self._image = MINERAL_IMAGE # We use the MINERAL_IMAGE from constants as a placeholder
-        
-    #Originally from Batter
-    def is_debug(self):
-        """Whether or not the actor is being debugged.
-        
-        Returns:
-            True if the actor is being debugged; False if otherwise.
-        """
-        return self._debug
-    
-    #Brought in from RFK
+
     def get_color(self):
         """Gets the actor's color as a tuple of three ints (r, g, b).
         

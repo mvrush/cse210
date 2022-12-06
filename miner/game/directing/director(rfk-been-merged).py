@@ -1,68 +1,26 @@
-#Originally from Batter
-from constants import *
-from game.casting.cast import Cast
-from game.directing.scene_manager import SceneManager
-from game.scripting.action_callback import ActionCallback
-from game.scripting.script import Script
-
-#Merged from RFK
 from game.casting.scoring import Scoring
 
+class Director:
+    """A person who directs the game. 
+    
+    The responsibility of a Director is to control the sequence of play.
 
-class Director(ActionCallback):
-    """A person who directs the game."""
+    Attributes:
+        _keyboard_service (KeyboardService): For getting directional input.
+        _video_service (VideoService): For providing video output.
+    """
 
     def __init__(self, keyboard_service, video_service):
-        """Constructs a new Director using the specified video service.
+        """Constructs a new Director using the specified keyboard and video services.
         
         Args:
+            keyboard_service (KeyboardService): An instance of KeyboardService.
             video_service (VideoService): An instance of VideoService.
         """
-        #Originally from Batter
-        self._video_service = video_service
-        self._cast = Cast()
-        self._script = Script()
-        self._scene_manager = SceneManager()
-
-        #Merged from RFK
         self._keyboard_service = keyboard_service
-        #self._video_service = video_service # Already present in Batter
+        self._video_service = video_service
         self._scoring = Scoring() # This intantiates an instance of the 'Scoring()' class so we can access it's methods and variables
         
-    #Originally from Batter
-    def on_next(self, scene):
-        """Overriden ActionCallback method transitions to next scene.
-        
-        Args:
-            A number representing the next scene to transition to.
-        """
-        self._scene_manager.prepare_scene(scene, self._cast, self._script)
-        
-    def start_game(self):
-        """Starts the game. Runs the main game loop."""
-        self.on_next(NEW_GAME)
-        self._execute_actions(INITIALIZE)
-        self._execute_actions(LOAD)
-        while self._video_service.is_window_open():
-            self._execute_actions(INPUT)
-            self._execute_actions(UPDATE)
-            self._execute_actions(OUTPUT)
-        self._execute_actions(UNLOAD)
-        self._execute_actions(RELEASE)
-        
-    def _execute_actions(self, group):
-        """Calls execute for each action in the given group.
-        
-        Args:
-            group (string): The action group name.
-            cast (Cast): The cast of actors.
-            script (Script): The script of actions.
-        """
-        actions = self._script.get_actions(group)    
-        for action in actions:
-            action.execute(self._cast, self._script, self)
-
-    #Merged from RFK
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
 
@@ -114,7 +72,6 @@ class Director(ActionCallback):
                 message = artifact.get_message() # Gets the 'message' value for the artifact, assigns it to the 'message' variable
                 text = artifact.get_text() # Gets the 'text' value for the artifact, assigns it to the 'text' variable. Text will hold either 'G', 'S', or 'C'.
                 score = artifact.get_value() # Gets the 'value' value for the artifact and assigns it to the 'score' variable
-                image = artifact.get_image() # Gets the 'image' for the artifact and assigns it to the 'image' variable
                 banner.set_text(message)
                 self._scoring.set_score(text, score)  # Call instance of Scoring() class, use 'set_score()' method and passes it the value of the artifact using the 'score' variable
                 cast.remove_actor("artifacts", artifact) # After banner is set and score is set, it removes the artifact. If I don't do this, it rolls up the score during each frame refresh.
@@ -128,4 +85,4 @@ class Director(ActionCallback):
         self._video_service.clear_buffer()
         actors = cast.get_all_actors()
         self._video_service.draw_actors(actors)
-        self._video_service.flush_buffer()       
+        self._video_service.flush_buffer()

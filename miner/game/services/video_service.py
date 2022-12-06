@@ -1,7 +1,8 @@
+#merged from RFK
 import pyray
 
-
 class VideoService:
+    #merged from RFK
     """Outputs the game state. The responsibility of the class of objects is to draw the game state 
     on the screen. 
     """
@@ -56,6 +57,7 @@ class VideoService:
         for actor in actors:
             self.draw_actor(actor)
     
+    #This was also found in Batter (below, which I commented out)
     def flush_buffer(self):
         """Copies the buffer contents to the screen. This method should be called at the end of
         the game's output phase.
@@ -86,6 +88,7 @@ class VideoService:
         """
         return self._width
 
+    #This was also found in Batter (below, which I commented out)
     def is_window_open(self):
         """Whether or not the window was closed by the user.
 
@@ -109,3 +112,95 @@ class VideoService:
             pyray.draw_line(0, y, self._width, y, pyray.GRAY)
         for x in range(0, self._width, self._cell_size):
             pyray.draw_line(x, 0, x, self._height, pyray.GRAY)
+    
+    
+    
+    #Originally from Batter
+    """A video service inteface."""
+
+    #def clear_buffer(self): # Had to comment out for RFK
+        #"""Prepares the buffer for drawing."""
+        #raise NotImplementedError("not implemented in base class")
+
+    def draw_image(self, image, position):
+        """Draws the given image on the buffer at the given position. The image won't appear
+        on the screen until flush_buffer() is called.
+
+        Args:
+            image: An instance of batter.casting.image.
+            position: An instance of batter.casting.point.
+
+        Raises:
+            KeyError: If the image file hasn't already been loaded.
+        """
+        raise NotImplementedError("not implemented in base class")
+
+    def draw_rectangle(self, size, position, color):
+        """Draws a rectangle on the buffer at the given position. The rectangle won't appear
+        on the screen until flush_buffer() is called.
+
+        Args:
+            size: An instance of batter.casting.point.
+            position: An instance of batter.casting.point.
+            color: An instance of batter.casting.color.
+        """
+        raise NotImplementedError("not implemented in base class")
+
+    def draw_text(self, text, position):
+        """Draws the given text on the buffer at the given position. The text won't appear
+        on the screen until flush_buffer() is called.
+
+        Args:
+            text: An instance of batter.casting.text.
+            position: An instance of batter.casting.point.
+
+        Raises:
+            KeyError: If the font file for the text hasn't already been loaded.
+        """
+        raise NotImplementedError("not implemented in base class")
+
+    #def flush_buffer(self): # Had to comment out for RFK
+    #    """Swaps the buffers, displaying everything that has been drawn on the screen."""
+    #    raise NotImplementedError("not implemented in base class")
+
+    def initialize(self):
+        """Initializes underlying video device. This method should be called before the main game 
+        loop begins."""
+        raise NotImplementedError("not implemented in base class")
+
+    #def is_window_open(self): # Had to comment out for RFK
+    #   """Wether or not the window is open.
+    #   
+    #   Returns:
+    #       True if the window is open; false if otherwise.
+    #   """
+    #    raise NotImplementedError("not implemented in base class")
+
+    def load_fonts(self, directory):
+        """Loads all the fonts in the given directory and sub-directories.
+        
+        Args:
+            directory: A string containing the absolute folder path where font files are stored.
+        """
+        raise NotImplementedError("not implemented in base class")
+
+    def load_images(self, directory):
+        """Loads all the images in the given directory and sub-directories.
+        
+        Args:
+            directory: A string containing the absolute folder path where image files are stored.
+        """
+        raise NotImplementedError("not implemented in base class")
+
+    def release(self):
+        """Releases the underlying video device. This method should be called after the game loop 
+        has finished running."""
+        raise NotImplementedError("not implemented in base class")
+
+    def unload_fonts(self):
+        """Unloads all fonts that were previously loaded."""
+        raise NotImplementedError("not implemented in base class")
+
+    def unload_images(self):
+        """Unloads all images that were previously loaded."""
+        raise NotImplementedError("not implemented in base class")
