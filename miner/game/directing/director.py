@@ -108,14 +108,17 @@ class Director(ActionCallback):
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
+        #robot._video_service.draw_image(image)
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
+                position = artifact.get_position() # This gets the 'position' value of the artifact and assigns it to the 'position' variable
                 message = artifact.get_message() # Gets the 'message' value for the artifact, assigns it to the 'message' variable
                 text = artifact.get_text() # Gets the 'text' value for the artifact, assigns it to the 'text' variable. Text will hold either 'G', 'S', or 'C'.
                 score = artifact.get_value() # Gets the 'value' value for the artifact and assigns it to the 'score' variable
                 image = artifact.get_image() # Gets the 'image' for the artifact and assigns it to the 'image' variable
                 banner.set_text(message)
+                self._video_service.draw_image(image, position)
                 self._scoring.set_score(text, score)  # Call instance of Scoring() class, use 'set_score()' method and passes it the value of the artifact using the 'score' variable
                 cast.remove_actor("artifacts", artifact) # After banner is set and score is set, it removes the artifact. If I don't do this, it rolls up the score during each frame refresh.
         
