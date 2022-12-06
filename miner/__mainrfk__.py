@@ -56,7 +56,7 @@ def main():
 
     robot = Actor()
     robot.set_text("#")
-    robot.set_image(MINER_IMAGE)
+    robot.set_image(MINER_IMAGE) #I think this is just setting the image location, then we need to load it somewhere else
     robot.set_font_size(FONT_SIZE)
     robot.set_color(WHITE)
     robot.set_position(position)
@@ -84,7 +84,7 @@ def main():
         
         artifact = Artifact()
         artifact.set_text(text)
-        artifact.set_image(MINERAL_IMAGE)
+        artifact.set_image(MINERAL_IMAGE) #I think this is just setting the image location, then we need to load it somewhere else
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
@@ -109,6 +109,7 @@ def main():
         
         artifact = Artifact()
         artifact.set_text(text)
+        artifact.set_image(MINERAL_IMAGE) #I think this is just setting the image location, then we need to load it somewhere else
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
@@ -133,6 +134,7 @@ def main():
         
         artifact = Artifact()
         artifact.set_text(text)
+        artifact.set_image(MINERAL_IMAGE) #I think this is just setting the image location, then we need to load it somewhere else
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
@@ -142,7 +144,7 @@ def main():
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
-    video_service = VideoService(CAPTION, MAX_X, MAX_Y, CELL_SIZE, FRAME_RATE)
+    video_service = VideoService(CAPTION, MAX_X, MAX_Y, CELL_SIZE, FRAME_RATE) # This video service was from RFK
     director = Director(keyboard_service, video_service)
     director.start_game(cast)
 
