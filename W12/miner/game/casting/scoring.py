@@ -52,4 +52,5 @@ class Scoring(Cast):
             return self._silver_score
         elif mineral == "coal":
             return self._coal_score
+    
 
