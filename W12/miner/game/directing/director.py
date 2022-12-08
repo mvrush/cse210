@@ -1,5 +1,6 @@
 from game.casting.scoring import Scoring
 
+
 class Director:
     """A person who directs the game. 
     
@@ -52,7 +53,7 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        if self._is_game_over == 0:
+        if self._is_game_over == False:
             banner = cast.get_single_actor("banners", 0)
             banner_gold = cast.get_single_actor("banners", 1) # Will need to overwrite these with 'set_text()' like we do for the main banner when we score
             banner_silver = cast.get_single_actor("banners", 2)
@@ -100,7 +101,8 @@ class Director:
                 self._is_game_over = False
                 # The following line sets the scores back to 0
                 self._scoring.clear_score()
-                self._get_inputs(cast)
+                self._get_inputs(cast) # This will return us to the '_get_inputs()' part of the loop. It works but doesn't redraw artifacts because it's using the current instance of 'cast' that was created in __main__.py
+
             else:
                 # release services
                 print("Please close window to quit")

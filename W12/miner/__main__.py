@@ -16,7 +16,7 @@ from game.shared.point import Point
 
 
 def main():
-    
+         
     # create the cast
     cast = Cast()
     
@@ -139,6 +139,8 @@ def main():
         artifact.set_value(value) # Passes our 'value' defined above to instance of 'Artifact()' class called 'artifact' to use the 'set_value()' method
         artifact.set_message(message)
         cast.add_actor("artifacts", artifact)
+
+
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
