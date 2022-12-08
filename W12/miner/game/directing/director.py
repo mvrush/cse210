@@ -104,7 +104,9 @@ class Director:
                 self._scoring.set_score('coal', 0)
                 self._get_inputs(cast)
             else:
+                # release services
                 print("Please close window to quit")
+                self._video_service.close_window() # This will automatically close the window if 'n' is selected.
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
