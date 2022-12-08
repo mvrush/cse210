@@ -98,6 +98,10 @@ class Director:
             game_over = input("You won! Do you want to play again (y/n)? ").lower() # the '.lower()' converts input to lower case
             if game_over == 'y':
                 self._is_game_over = False
+                # The following lines set the scores back to 0
+                self._scoring.set_score('gold', 0)
+                self._scoring.set_score('silver', 0)
+                self._scoring.set_score('coal', 0)
                 self._get_inputs(cast)
             else:
                 print("Please close window to quit")
