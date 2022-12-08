@@ -50,7 +50,7 @@ class SceneManager:
     COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_RACKET_ACTION = CollideRacketAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
-    DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
+    #DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE) # Remove to remove ball for miner (refrenced below as well and removed there)
     DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
     DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
@@ -58,7 +58,7 @@ class SceneManager:
     END_DRAWING_ACTION = EndDrawingAction(VIDEO_SERVICE)
     INITIALIZE_DEVICES_ACTION = InitializeDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
-    MOVE_BALL_ACTION = MoveBallAction()
+    # MOVE_BALL_ACTION = MoveBallAction() # Remove to remove ball for miner (refrenced below as well and removed there)
     MOVE_RACKET_ACTION = MoveRacketAction()
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     START_DRAWING_ACTION = StartDrawingAction(VIDEO_SERVICE)
@@ -254,7 +254,7 @@ class SceneManager:
         script.clear_actions(OUTPUT)
         script.add_action(OUTPUT, self.START_DRAWING_ACTION)
         script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
-        script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
+        #script.add_action(OUTPUT, self.DRAW_BALL_ACTION) # Remove to remove ball for miner
         script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
         script.add_action(OUTPUT, self.DRAW_RACKET_ACTION)
         script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
@@ -270,7 +270,7 @@ class SceneManager:
         
     def _add_update_script(self, script):
         script.clear_actions(UPDATE)
-        script.add_action(UPDATE, self.MOVE_BALL_ACTION)
+        #script.add_action(UPDATE, self.MOVE_BALL_ACTION) # Remove to remove ball for miner
         script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
