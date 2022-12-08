@@ -52,5 +52,9 @@ class Scoring(Cast):
             return self._silver_score
         elif mineral == "coal":
             return self._coal_score
-    
+
+    def clear_score(self):
+        self._gold_score = 0
+        self._silver_score = 0
+        self._coal_score = 0    
 

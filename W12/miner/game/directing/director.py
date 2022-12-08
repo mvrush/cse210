@@ -52,7 +52,7 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        if self._is_game_over == False:
+        if self._is_game_over == 0:
             banner = cast.get_single_actor("banners", 0)
             banner_gold = cast.get_single_actor("banners", 1) # Will need to overwrite these with 'set_text()' like we do for the main banner when we score
             banner_silver = cast.get_single_actor("banners", 2)
@@ -98,10 +98,8 @@ class Director:
             game_over = input("You won! Do you want to play again (y/n)? ").lower() # the '.lower()' converts input to lower case
             if game_over == 'y':
                 self._is_game_over = False
-                # The following lines set the scores back to 0
-                self._scoring.set_score('gold', 0)
-                self._scoring.set_score('silver', 0)
-                self._scoring.set_score('coal', 0)
+                # The following line sets the scores back to 0
+                self._scoring.clear_score()
                 self._get_inputs(cast)
             else:
                 # release services
