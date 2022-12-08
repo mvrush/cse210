@@ -45,6 +45,8 @@ PURPLE = Color(255, 0, 255)
 # KEYS
 LEFT = "left"
 RIGHT = "right"
+UP = "up" # Add key from the raylib_keyboard_service.py for up movement.
+DOWN = "down" # Add key from the raylib_keyboard_service.py for down movement.
 SPACE = "space"
 ENTER = "enter"
 PAUSE = "p"

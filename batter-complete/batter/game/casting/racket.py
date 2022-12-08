@@ -50,6 +50,19 @@ class Racket(Actor):
         """Steers the bat to the right."""
         velocity = Point(RACKET_VELOCITY, 0)
         self._body.set_velocity(velocity)
+
+    
+    ### Had to add next two methods to move the racket up and down. Used in ###
+    def swing_up(self):
+        """Steers the bat up."""
+        velocity = Point(0, -RACKET_VELOCITY)
+        self._body.set_velocity(velocity)
+
+    def swing_down(self):
+        """Steers the bat down."""
+        velocity = Point(0, RACKET_VELOCITY)
+        self._body.set_velocity(velocity)
+    ###
     
     def stop_moving(self):
         """Stops the bat from moving."""
