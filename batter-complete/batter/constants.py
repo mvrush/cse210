@@ -114,7 +114,7 @@ RACKET_VELOCITY = 7
 # BRICK
 BRICK_GROUP = "bricks"
 BRICK_IMAGES = {
-    "b": [f"batter/assets/images/{i:03}.png" for i in range(10,19)],
+    "b": [f"batter/assets/images/{i:03}.png" for i in range(10,19)], # {i:03}.png means first 3 letters before the .png for the filename
     "g": [f"batter/assets/images/{i:03}.png" for i in range(20,29)],
     "p": [f"batter/assets/images/{i:03}.png" for i in range(30,39)],
     "y": [f"batter/assets/images/{i:03}.png" for i in range(40,49)]
