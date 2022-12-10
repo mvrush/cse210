@@ -107,7 +107,7 @@ RACKET_GROUP = "rackets"
 RACKET_IMAGES = [f"batter/assets/images/{n:03}.png" for n in range(100, 103)]
 #RACKET_IMAGES = "batter/assets/images/miner.png" # Load the image of the miner. I tried to do this with a single image and couldn't.
 RACKET_WIDTH = 106
-RACKET_HEIGHT = 28
+RACKET_HEIGHT = 28 * 2.5 # Had to 2.5 times the height of the racket to fit the whole miner img.
 RACKET_RATE = 6
 RACKET_VELOCITY = 7
 
@@ -120,7 +120,7 @@ BRICK_IMAGES = {
     "y": [f"batter/assets/images/{i:03}.png" for i in range(40,49)]
 }
 BRICK_WIDTH = 80
-BRICK_HEIGHT = 28
+BRICK_HEIGHT = 80 # Increase height from 28 to 80 to space minerals per their size.
 BRICK_DELAY = 0.5
 BRICK_RATE = 4
 BRICK_POINTS = 50

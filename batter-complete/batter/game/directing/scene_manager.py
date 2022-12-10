@@ -230,7 +230,7 @@ class SceneManager:
     def _add_racket(self, cast):
         cast.clear_actors(RACKET_GROUP)
         x = CENTER_X - RACKET_WIDTH / 2
-        y = SCREEN_HEIGHT - RACKET_HEIGHT
+        y = SCREEN_HEIGHT - RACKET_HEIGHT # Gets the screen height and subtracts the racket height to place miner in the starting position.
         position = Point(x, y)
         size = Point(RACKET_WIDTH, RACKET_HEIGHT)
         velocity = Point(0, 0)
