@@ -23,7 +23,7 @@ FIELD_RIGHT = SCREEN_WIDTH
 
 # FONT
 #FONT_FILE = "batter/assets/fonts/zorque.otf" # Have to remove 'batter/' from the path because we are starting in the 'batter' folder already.
-FONT_FILE = "batter/assets/fonts/zorque.otf"
+FONT_FILE = "batter/assets/fonts/RubikGemstones-Regular.ttf"
 FONT_SMALL = 32
 FONT_LARGE = 48
 
@@ -128,5 +128,5 @@ BRICK_POINTS = 50
 # DIALOG
 DIALOG_GROUP = "dialogs"
 ENTER_TO_START = "PRESS ENTER TO START"
-PREP_TO_LAUNCH = "PREPARING TO MINE"
+PREP_TO_LAUNCH = "GET READY TO MINE!"
 WAS_GOOD_GAME = "GAME OVER"

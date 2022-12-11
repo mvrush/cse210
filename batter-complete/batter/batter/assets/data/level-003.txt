@@ -1,5 +1,2 @@
-b1, b1, b1, b1, b1, b1, y9, b1, b1, b1, b1, b1, b1
-b1, b1, b1, y9, b1, y9, b1, y9, b1, y9, b1, b1, b1
-b1, b1, y9, b1, y9, b1, y9, b1, y9, b1, y9, b1, b1
-b1, b1, b1, y9, b1, y9, b1, y9, b1, y9, b1, b1, b1
-b1, b1, b1, b1, b1, b1, y9, b1, b1, b1, b1, b1, b1
+b9, b9, b9, b9, b9, b9, b9, b9, b9, b9, b9, b9, b9
+b9, b9, b9, b9, b9, b9, b9, b9, b9, b9, b9, b9, b9
